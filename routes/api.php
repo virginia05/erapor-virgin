@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\SiswaController;
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// http://127.0.0.1:8000/api/siswa
+// Route::get('/siswa', [SiswaController::class, 'get']);
+// Route::post('/put/uts/{id}', [SiswaController::class, 'putNilaiUts']);
+// Route::post('/put/uas/{id}', [SiswaController::class, 'putNilaiUas']);

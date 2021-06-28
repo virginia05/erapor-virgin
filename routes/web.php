@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+use App\Http\Controllers\SiswaController;
+
+Route::get('/', [SiswaController::class, 'index']);
+Route::post('/put/nilaiUtsUas/{id}', [SiswaController::class, 'putNilaiUtsUas']);
+// Route::post('/put/uas/{id}', [SiswaController::class, 'putNilaiUas']);
+
+// Route::get('/', function(){
+//     return View::make('pages.home');
+// });
+Route::get('about', function(){
+    return View::make('pages.about');
+});
+Route::get('projects', function(){
+    return View::make('pages.projects');
+});
+Route::get('contact', function(){
+    return View::make('pages.contact');
 });

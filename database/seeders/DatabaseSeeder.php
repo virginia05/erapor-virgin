@@ -541,7 +541,7 @@ class DatabaseSeeder extends Seeder
          DB::table('nilai')->insert([
             'id_mapel' => '1',
             'nis' => '1001',
-            'semester' => '1',
+            'semester' => 1,
             'UTS' => 0,
             'UAS' => 0,
             'catatan' => '',
@@ -554,7 +554,7 @@ class DatabaseSeeder extends Seeder
          DB::table('nilai')->insert([
             'id_mapel' => '1',
             'nis' => '1002',
-            'semester' => '1',
+            'semester' => 1,
             'UTS' => 0,
             'UAS' => 0,
             'catatan' => '',
@@ -567,7 +567,7 @@ class DatabaseSeeder extends Seeder
          DB::table('nilai')->insert([
             'id_mapel' => '1',
             'nis' => '1003',
-            'semester' => '1',
+            'semester' => 1,
             'UTS' => 0,
             'UAS' => 0,
             'catatan' => '',
@@ -580,7 +580,7 @@ class DatabaseSeeder extends Seeder
          DB::table('nilai')->insert([
             'id_mapel' => '2',
             'nis' => '1004',
-            'semester' => '3',
+            'semester' => 1,
             'UTS' => 0,
             'UAS' => 0,
             'catatan' => '',
@@ -593,7 +593,7 @@ class DatabaseSeeder extends Seeder
          DB::table('nilai')->insert([
             'id_mapel' => '2',
             'nis' => '1005',
-            'semester' => '3',
+            'semester' => 1,
             'UTS' => 0,
             'UAS' => 0,
             'catatan' => '',

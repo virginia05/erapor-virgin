@@ -539,11 +539,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
          DB::table('nilai')->insert([
-            'id_mapel' => '1',
+            'id_mapel' => 1,
             'nis' => '1001',
             'semester' => 1,
-            'UTS' => 0,
-            'UAS' => 0,
             'catatan' => '',
             'keterampilan' => '',
             'tahun_ajaran'=> '2021/2022',
@@ -552,11 +550,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
          DB::table('nilai')->insert([
-            'id_mapel' => '1',
+            'id_mapel' => 1,
             'nis' => '1002',
             'semester' => 1,
-            'UTS' => 0,
-            'UAS' => 0,
             'catatan' => '',
             'keterampilan' => '',
             'tahun_ajaran'=> '2021/2022',
@@ -565,11 +561,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
          DB::table('nilai')->insert([
-            'id_mapel' => '1',
+            'id_mapel' => 1,
             'nis' => '1003',
             'semester' => 1,
-            'UTS' => 0,
-            'UAS' => 0,
             'catatan' => '',
             'keterampilan' => '',
             'tahun_ajaran'=> '2021/2022',
@@ -578,7 +572,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
          DB::table('nilai')->insert([
-            'id_mapel' => '2',
+            'id_mapel' => 2,
             'nis' => '1004',
             'semester' => 1,
             'UTS' => 0,
@@ -591,7 +585,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
          DB::table('nilai')->insert([
-            'id_mapel' => '2',
+            'id_mapel' => 2,
             'nis' => '1005',
             'semester' => 1,
             'UTS' => 0,
@@ -605,16 +599,16 @@ class DatabaseSeeder extends Seeder
 
          DB::table('beban_ajar')->insert([
             'kode_guru' => '1',
-            'id_kelas' => '1',
-            'id_mapel' => '1',
+            'id_kelas' => 1,
+            'id_mapel' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
          DB::table('beban_ajar')->insert([
             'kode_guru' => '1',
-            'id_kelas' => '1',
-            'id_mapel' => '2',
+            'id_kelas' => 1,
+            'id_mapel' => 2,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

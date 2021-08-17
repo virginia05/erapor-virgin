@@ -170,7 +170,7 @@ class NilaiController extends Controller
         ->join('siswa', 'nilai.nis', '=', 'siswa.nis')
         ->join('kelas', 'siswa.id_kelas', '=', 'kelas.id_kelas')
         ->join('rombel', 'kelas.kode_rombel', '=', 'rombel.kode_rombel')
-        ->groupBy('nilai.nis')
+        ->groupBy('siswa.nis')
         ->where('nilai.tahun_ajaran',$tahun_ajaran)
         ->where('rombel.kode_rombel',$kode_rombel)
         ->get();

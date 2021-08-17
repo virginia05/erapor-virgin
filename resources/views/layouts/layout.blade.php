@@ -3,16 +3,16 @@
 <head>
     @include('includes.head')
 </head>
-<body>
+<body style="min-height: 100vh;">
 <div class="">
 
     {{-- <header class="row"> --}}
         @include('includes.header')
     {{-- </header> --}}
 
-    <div id="main" class="d-flex">
+    <div id="main" class="d-flex" >
         <!-- sidebar content -->
-        <div id="sidebar" class="col-md-2 text-center border">
+        <div id="sidebar" class="col-md-2 text-center" style="border-right: 1px solid;">
             @include('includes.sidebar')
         </div>
 
@@ -22,9 +22,9 @@
         </div>
     </div>
 
-    <footer class="">
+    {{-- <footer class="">
         @include('includes.footer')
-    </footer>
+    </footer> --}}
 
 </div>
 </body>

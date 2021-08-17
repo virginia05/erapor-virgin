@@ -15,6 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
+        // 'passwords' => 'guru',
         'passwords' => 'users',
     ],
 
@@ -38,13 +39,20 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'guru',
+            // 'provider' => 'users',
         ],
 
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
+        ],
+
+        'guru' => [
+            'redirectTo' => 'pages.home',
+            'driver' => 'session',
+            'provider' => 'guru',
         ],
     ],
 
@@ -66,9 +74,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
+
+        'guru' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Guru::class,
         ],
 
         // 'users' => [

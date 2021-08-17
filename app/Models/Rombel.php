@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rombel extends Model
 {
     use HasFactory;
+    public $table = "rombel";
+    protected $primaryKey = 'kode_rombel';
+
 }

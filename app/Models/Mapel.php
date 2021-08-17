@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mapel extends Model
 {
     use HasFactory;
+    public $table = "mapel";
+    protected $primaryKey = 'id_mapel';
+
 }

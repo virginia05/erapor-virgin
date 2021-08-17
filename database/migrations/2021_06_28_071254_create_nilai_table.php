@@ -14,14 +14,20 @@ class CreateNilaiTable extends Migration
     public function up()
     {
         Schema::create('nilai', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_mapel');
+            $table->increments('id_nilai');
+            $table->integer('id_mapel')->unsigned();
             $table->string('nis');
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');
-            $table->foreign('kode_mapel')->references('kode_mapel')->on('mapel')->onDelete('cascade');
+            $table->foreign('id_mapel')->references('id_mapel')->on('mapel')->onDelete('cascade');
+            $table->string('catatan');
+            $table->string('tahun_ajaran');
             $table->integer('semester');
-            $table->integer('UTS');
-            $table->integer('UAS');
+            $table->integer('UTS')->default('0');
+            $table->integer('UAS')->default('0');
+            $table->integer('pengetahuan')->default('0');
+            $table->integer('keterampilan')->default('0');
+            $table->integer('sikap')->default('0');
+            $table->integer('jumlah')->default('0');
             $table->timestamps();
         });
     }

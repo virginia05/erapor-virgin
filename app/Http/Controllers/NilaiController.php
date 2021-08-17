@@ -158,10 +158,14 @@ class NilaiController extends Controller
         $datas = Nilai::select(
             'siswa.nis',
             'siswa.nama',
-            DB::raw('group_concat(mapel.nama_mapel) as nama_mapel'),
-            DB::raw('group_concat(nilai.pengetahuan) as P'),
-            DB::raw('group_concat(nilai.keterampilan) as K'),
-            DB::raw('group_concat(nilai.sikap) as S'),
+            // DB::raw('group_concat(mapel.nama_mapel) as nama_mapel'),
+            // DB::raw('group_concat(nilai.pengetahuan) as P'),
+            // DB::raw('group_concat(nilai.keterampilan) as K'),
+            // DB::raw('group_concat(nilai.sikap) as S'),
+            DB::raw("array_to_string(array_agg(mapel.nama_mapel), ',') as nama_mapel"),
+            DB::raw("array_to_string(array_agg(nilai.pengetahuan) as P"),
+            DB::raw("array_to_string(array_agg(nilai.keterampilan) as K"),
+            DB::raw("array_to_string(array_agg(nilai.sikap) as S"),
         )->join('mapel', 'nilai.id_mapel', '=', 'mapel.id_mapel')
         ->join('siswa', 'nilai.nis', '=', 'siswa.nis')
         ->join('kelas', 'siswa.id_kelas', '=', 'kelas.id_kelas')

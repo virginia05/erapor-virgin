@@ -176,7 +176,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('kelas')->insert([
             'kode_rombel' => '1',
-            'kode_guru'=>  '2',   
+            'kode_guru'=>  '1',   
             'nama_kelas'=> '10 MM 2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -612,7 +612,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
          DB::table('beban_ajar')->insert([
-            'kode_guru' => '2',
+            'kode_guru' => '1',
             'id_kelas' => '1',
             'id_mapel' => '2',
             'created_at' => Carbon::now(),

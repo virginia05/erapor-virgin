@@ -163,14 +163,14 @@ class NilaiController extends Controller
             // DB::raw('group_concat(nilai.keterampilan) as K'),
             // DB::raw('group_concat(nilai.sikap) as S'),
             DB::raw("array_to_string(array_agg(mapel.nama_mapel), ',') as nama_mapel"),
-            DB::raw("array_to_string(array_agg(nilai.pengetahuan) as P"),
-            DB::raw("array_to_string(array_agg(nilai.keterampilan) as K"),
-            DB::raw("array_to_string(array_agg(nilai.sikap) as S"),
+            DB::raw("array_to_string(array_agg(nilai.pengetahuan), ',') as P"),
+            DB::raw("array_to_string(array_agg(nilai.keterampilan), ',') as K"),
+            DB::raw("array_to_string(array_agg(nilai.sikap), ',') as S"),
         )->join('mapel', 'nilai.id_mapel', '=', 'mapel.id_mapel')
         ->join('siswa', 'nilai.nis', '=', 'siswa.nis')
         ->join('kelas', 'siswa.id_kelas', '=', 'kelas.id_kelas')
         ->join('rombel', 'kelas.kode_rombel', '=', 'rombel.kode_rombel')
-        ->groupBy('nis')
+        ->groupBy('nilai.nis')
         ->where('nilai.tahun_ajaran',$tahun_ajaran)
         ->where('rombel.kode_rombel',$kode_rombel)
         ->get();

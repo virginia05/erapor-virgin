@@ -90,6 +90,7 @@
                 <th scope="col">Nama</th>
                 <th scope="col">Kepribadian</th>
                 <th scope="col">Ekskul</th>
+                <th scope="col">Catatan</th>
               </tr>
             </thead>
             <tbody>
@@ -102,6 +103,9 @@
                 </td>
                 <td>
                   <a class="btn btn-primary" href="{{ url("/form-ekskul/".$dataSiswa->nis) }}" >Input Ekskul</a>
+                </td>
+                <td>
+                  <a class="btn btn-primary" href="{{ url("/form-catatan/".$dataSiswa->nis) }}" >Input Catatan</a>
                 </td>
               </tr>
               @endforeach

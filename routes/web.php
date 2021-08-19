@@ -86,6 +86,8 @@ Route::middleware('auth:guru')->group(function(){
 	Route::get('/form-kepribadian/{nis}', [KepribadianController::class, 'index']);
 	Route::post('/tambah-kepribadian', [KepribadianController::class, 'store']);
 	Route::post('/edit-kepribadian/{id}', [KepribadianController::class, 'update']);
+	Route::post('/edit-catatan/{nis}', [KepribadianController::class, 'update_catatan']);
+	Route::get('/form-catatan/{nis}', [KepribadianController::class, 'form_catatan']);
 
 	Route::get('/form-ekskul/{nis}', [EkstrakulikulerController::class, 'index']);
 	Route::post('/tambah-ekskul', [EkstrakulikulerController::class, 'store']);

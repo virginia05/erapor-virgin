@@ -61,6 +61,48 @@ class KepribadianController extends Controller
 
     }
 
+    public function update_catatan(Request $request)
+    {
+        $findkepribadian = Kepribadian::where('nis', $request->nis)->first();
+
+        if($findkepribadian){      
+            $data = [
+                'catatan' => $request->catatan,
+            ];
+            Kepribadian::where('id',$findkepribadian->id)->update($data);
+        }else{
+            $findsiswa = Siswa::where('nis', $request->nis)->first();
+
+            $get_tahun_mulai = intval(substr($findsiswa->tahun_mulai,0,4));
+            $get_tahun_skrng = intval(date('Y'));
+            
+            $hasil = $get_tahun_skrng - $get_tahun_mulai;
+            if($hasil == 0 || $hasil >= 9){
+                $hasil = 1;
+            }
+
+            $dataKepribadian = new Kepribadian;
+            $dataKepribadian->semester = $hasil;       
+            $dataKepribadian->tahun_ajaran = date('Y')."/".date('Y',strtotime('+1 year'));
+            $dataKepribadian->nis = $request->nis; 
+            $dataKepribadian->nilai_kerajinan = 0; 
+            $dataKepribadian->nilai_kerapihan = 0; 
+            $dataKepribadian->nilai_kelakuan = 0; 
+            $dataKepribadian->catatan = $request->catatan; 
+
+            $dataKepribadian->save();
+        }
+        return redirect()->to('/nilai');
+    }
+    
+    public function form_catatan($nis)
+    {
+        $kepribadian = Kepribadian::where('nis', $nis)->first();
+
+        return view('pages.form-catatan',compact('nis','kepribadian'));
+    }
+    
+
     /**
      * Display the specified resource.
      *

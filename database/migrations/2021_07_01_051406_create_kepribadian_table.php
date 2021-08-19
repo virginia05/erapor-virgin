@@ -21,6 +21,7 @@ class CreateKepribadianTable extends Migration
             $table->string('nilai_kerajinan')->default('0');
             $table->string('nilai_kelakuan')->default('0');
             $table->string('nilai_kerapihan')->default('0');
+            $table->string('catatan')->nullable();
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');
             $table->timestamps();
         });

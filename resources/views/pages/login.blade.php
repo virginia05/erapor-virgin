@@ -28,6 +28,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <style type="text/css">
+        body{
+            background-image: url('{{url('/images/sekolah.png')}}');
+            background-size: cover;
+
+        }
+
         .main-content{
             width: 50%;
             border-radius: 20px;
@@ -111,13 +117,13 @@
     <div class="container-fluid">
         <div class="row main-content bg-success text-center">
             <div class="col-md-4 text-center company__info">
-                <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
-                <h4 class="company_title">Your Company Logo</h4>
+
+                <img src="{{url('/images/logo.png')}}" alt="Image"/>
             </div>
             <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
                 <div class="container-fluid">
                     <div class="row mt-3 ml-5">
-                        <h2>Log In</h2>
+                        <h2>LOGIN</h2>
                     </div>
                     <div class="row">
                         <form action="{{ route('login') }}" method="post" class="form-group">

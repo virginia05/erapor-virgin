@@ -14,9 +14,9 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        // 'passwords' => 'guru',
-        'passwords' => 'users',
+        'guard' => 'guru',
+        'passwords' => 'guru',
+        // 'passwords' => 'users',
     ],
 
     /*
@@ -50,10 +50,20 @@ return [
         ],
 
         'guru' => [
-            'redirectTo' => 'pages.home',
             'driver' => 'session',
             'provider' => 'guru',
         ],
+
+        'siswa' => [
+            'driver' => 'session',
+            'provider' => 'siswa',
+        ],
+
+        // 'guru' => [
+        //     'redirectTo' => 'pages.kelolaNilai',
+        //     'driver' => 'session',
+        //     'provider' => 'guru',
+        // ],
     ],
 
     /*
@@ -84,6 +94,11 @@ return [
             'model' => App\Models\Guru::class,
         ],
 
+        'siswa' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Siswa::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -107,8 +122,17 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
+            'provider' => 'guru',
+            // 'table' => 'password_resets',
+            'table' => 'guru',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'siswa' => [
+            'provider' => 'siswa',
+            // 'table' => 'password_resets',
+            'table' => 'siswa',
             'expire' => 60,
             'throttle' => 60,
         ],

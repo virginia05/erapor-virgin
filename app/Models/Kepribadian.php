@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Kepribadian extends Model
 {
     use HasFactory;
+    public $table = "kepribadian";
+    
 }

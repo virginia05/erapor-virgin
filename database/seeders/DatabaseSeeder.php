@@ -34,24 +34,6 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
 
-        // DB::table('guru')->insert([
-        //     'kode_guru' => '2',
-        //     'nuptk' => '0056748651300029',
-        //     'nama' => 'Fikri Dwiyansyah',
-        //     'nomor' => 888888888,
-        //     'email' => 'user@mailnesia.com',
-        //     'tgl_lahir' => '1970-07-24',
-        //     'alamat' => 'bogor',
-        //     'status_pegawai' => 'GTY/PTY',
-        //     'jenis_ptk' => 'Guru Mapel',
-        //     'gelar' => '',
-        //     'sertifikasi' => '',
-        //     'password' => Hash::make('123'),
-        //     'created_at' => Carbon::now(),
-        //     'updated_at' => Carbon::now()
-        // ]);
-
-         
         DB::table('rombel')->insert([
             'kode_rombel' => '1',
             'nama_rombel' => "10",
@@ -158,29 +140,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
 
-        DB::table('kelas')->insert([
-            'kode_rombel' => '1',
-            'kode_guru'=>  '1',   
-            'nama_kelas'=> 'Belum Ada Kelas',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('kelas')->insert([
-            'kode_rombel' => '1',
-            'kode_guru'=>  '1',   
-            'nama_kelas'=> '10 MM 1',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('kelas')->insert([
-            'kode_rombel' => '1',
-            'kode_guru'=>  '1',   
-            'nama_kelas'=> '10 MM 2',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+        
 
         DB::table('mapel')->insert([
             'nama_mapel' => 'Matematika',
@@ -472,6 +432,47 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
 
+         DB::table('guru')->insert([
+            'kode_guru' => '2',
+            'nuptk' => '0056748651300029',
+            'nama' => 'Fikri Dwiyansyah',
+            'nomor' => 888888888,
+            'email' => 'user@mailnesia.com',
+            'tgl_lahir' => '1970-07-24',
+            'alamat' => 'bogor',
+            'status_pegawai' => 'GTY/PTY',
+            'jenis_ptk' => 'Tenaga Administrasi Sekolah',
+            'gelar' => '',
+            'sertifikasi' => '',
+            'password' => Hash::make('123'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+           DB::table('kelas')->insert([
+            'kode_rombel' => '1',
+            'kode_guru'=>  '2',   
+            'nama_kelas'=> 'Belum Ada Kelas',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('kelas')->insert([
+            'kode_rombel' => '1',
+            'kode_guru'=>  '1',   
+            'nama_kelas'=> '10 MM 1',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('kelas')->insert([
+            'kode_rombel' => '1',
+            'kode_guru'=>  '1',   
+            'nama_kelas'=> '10 MM 2',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
 
          DB::table('siswa')->insert([
             'nis' => '1001',
@@ -481,6 +482,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@mailnesia.com',
             'alamat' => 'bogor',
             'ttl' => 'bogor',
+            'tahun_mulai' => date('Y')."/".date('Y',strtotime('+1 year')),
             'password' => Hash::make('123'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -493,11 +495,14 @@ class DatabaseSeeder extends Seeder
             'nomor' => 888888888,
             'email' => 'user@mailnesia.com',
             'alamat' => 'bogor',
+            'tahun_mulai' => date('Y')."/".date('Y',strtotime('+1 year')),
             'ttl' => 'bogor',
             'password' => Hash::make('123'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+         
 
          DB::table('siswa')->insert([
             'nis' => '1003',
@@ -506,6 +511,7 @@ class DatabaseSeeder extends Seeder
             'nomor' => 888888888,
             'email' => 'user@mailnesia.com',
             'alamat' => 'bogor',
+            'tahun_mulai' => date('Y')."/".date('Y',strtotime('+1 year')),
             'ttl' => 'bogor',
             'password' => Hash::make('123'),
             'created_at' => Carbon::now(),
@@ -515,10 +521,11 @@ class DatabaseSeeder extends Seeder
          DB::table('siswa')->insert([
             'nis' => '1004',
             'nama' => 'Rashad Evans',
-            'id_kelas' => '2',
+            'id_kelas' => '1',
             'nomor' => 888888888,
             'email' => 'user@mailnesia.com',
             'alamat' => 'bogor',
+            'tahun_mulai' => date('Y')."/".date('Y',strtotime('+1 year')),
             'ttl' => 'bogor',
             'password' => Hash::make('123'),
             'created_at' => Carbon::now(),
@@ -528,65 +535,21 @@ class DatabaseSeeder extends Seeder
          DB::table('siswa')->insert([
             'nis' => '1005',
             'nama' => 'Mikasa Ackerman',
-            'id_kelas' => '2',
+            'id_kelas' => '1',
             'nomor' => 888888888,
             'email' => 'user@mailnesia.com',
             'alamat' => 'bogor',
+            'tahun_mulai' => date('Y')."/".date('Y',strtotime('+1 year')),
             'ttl' => 'bogor',
             'password' => Hash::make('123'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
-         DB::table('nilai')->insert([
-            'id_mapel' => 1,
-            'nis' => '1001',
-            'semester' => 1,
-            
-            'tahun_ajaran'=> '2021/2022',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-         DB::table('nilai')->insert([
-            'id_mapel' => 1,
-            'nis' => '1002',
-            'semester' => 1,
-            'tahun_ajaran'=> '2021/2022',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-         DB::table('nilai')->insert([
-            'id_mapel' => 1,
-            'nis' => '1003',
-            'semester' => 1,
-            'tahun_ajaran'=> '2021/2022',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-         DB::table('nilai')->insert([
-            'id_mapel' => 2,
-            'nis' => '1004',
-            'semester' => 1,            
-            'tahun_ajaran'=> '2021/2022',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-         DB::table('nilai')->insert([
-            'id_mapel' => 2,
-            'nis' => '1005',
-            'semester' => 1,            
-            'tahun_ajaran'=> '2021/2022',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
 
          DB::table('beban_ajar')->insert([
             'kode_guru' => '1',
-            'id_kelas' => 1,
+            'id_kelas' => 2,
             'id_mapel' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -594,7 +557,7 @@ class DatabaseSeeder extends Seeder
 
          DB::table('beban_ajar')->insert([
             'kode_guru' => '1',
-            'id_kelas' => 1,
+            'id_kelas' => 2,
             'id_mapel' => 2,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

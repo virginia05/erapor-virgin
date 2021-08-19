@@ -16,14 +16,17 @@ class CreateKepribadianTable extends Migration
         Schema::create('kepribadian', function (Blueprint $table) {
             $table->id();
             $table->string('nis');
-            $table->integer('semester');
-            $table->string('nilai_kepribadian');
-            $table->string('nilai_kelakuan');
-            $table->string('nilai_keterampilan');
+            $table->string('tahun_ajaran',10)->nullable();
+            $table->integer('semester')->default('1');
+            $table->string('nilai_kerajinan')->default('0');
+            $table->string('nilai_kelakuan')->default('0');
+            $table->string('nilai_kerapihan')->default('0');
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');
             $table->timestamps();
         });
     }
+        
+
 
     /**
      * Reverse the migrations.

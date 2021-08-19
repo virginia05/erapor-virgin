@@ -1,10 +1,9 @@
 @extends('layouts.layout')
 @section('content')
     <div class="m-3 mt-4 mb-4">
-        <iframe id="invisible" name="invisible" style="display:none;"></iframe>
         <div class="d-flex align-items-baseline">
 
-           <a href="{{ url("/menu-guru") }}" class="btn btn-success mr-3"> 
+           <a href="{{ url("/nilai") }}" class="btn btn-success mr-3"> 
             Kembali
           </a>
           <h5>{{$siswa->nama}}</h5>
@@ -20,7 +19,7 @@
                 <label for="staticTugas{{$tugas->id}}" class="col-sm-2 col-form-label">{{$tugas->keterangan}}</label>
                 <div class="col-sm-3">
 
-                <form class="d-flex" method="post" action="{{ url("/put/nilaiTugas/$tugas->id") }}" target="invisible" >
+                <form class="d-flex" method="post" action="{{ url("/put/nilaiTugas/$tugas->id") }}">
                   @csrf
                   <input type="hidden" name="id_mapel" value="{{ $mapel }}">
                   <input type="hidden" name="nis" value="{{ $nis }}">
@@ -28,6 +27,7 @@
                   <button class="btn btn-warning ml-3" type="submit">
                     Edit
                   </button>
+                  <a class="btn btn-danger ml-3" href="{{ url("/delete/nilaiTugas/$tugas->id") }}" onclick="return confirm('Apakah Anda Yakin?')">Hapus</a>
                 </form>
                 </div>
             </div>
@@ -47,7 +47,7 @@
               </div>
               <div class="modal-body">
                 
-                <form method="post" action="{{ url("/post/nilaiTugas/$nis") }}" target="invisible">
+                <form method="post" action="{{ url("/post/nilaiTugas/$nis") }}" >
                   @csrf
                   <input type="hidden" name="id_mapel" value="{{ $mapel }}">
                   <input type="hidden" name="nis" value="{{ $nis }}">

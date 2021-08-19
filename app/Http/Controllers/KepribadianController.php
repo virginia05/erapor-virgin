@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kepribadian;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class KepribadianController extends Controller
@@ -12,9 +13,11 @@ class KepribadianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($nis)
     {
-        //
+        $datas = Kepribadian::where('nis',$nis)->orderBy('semester','asc')->get();
+
+        return view('pages.kepribadian',compact('nis','datas'));
     }
 
     /**
@@ -35,7 +38,27 @@ class KepribadianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $findsiswa = Siswa::where('nis', $request->nis)->first();
+
+        $get_tahun_mulai = intval(substr($findsiswa->tahun_mulai,0,4));
+        $get_tahun_skrng = intval(date('Y'));
+        
+        $hasil = $get_tahun_skrng - $get_tahun_mulai;
+        if($hasil == 0 || $hasil >= 9){
+            $hasil = 1;
+        }
+
+        $dataKepribadian = new Kepribadian;
+        $dataKepribadian->semester = $hasil;       
+        $dataKepribadian->tahun_ajaran = date('Y')."/".date('Y',strtotime('+1 year'));  
+        $dataKepribadian->nis = $request->nis; 
+        $dataKepribadian->nilai_kerajinan = $request->nilai_kerajinan; 
+        $dataKepribadian->nilai_kerapihan = $request->nilai_kerapihan; 
+        $dataKepribadian->nilai_kelakuan = $request->nilai_kelakuan; 
+
+        $dataKepribadian->save();
+        return redirect()->to('/form-kepribadian/'.$request->nis);
+
     }
 
     /**
@@ -67,9 +90,18 @@ class KepribadianController extends Controller
      * @param  \App\Models\Kepribadian  $kepribadian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kepribadian $kepribadian)
+    public function update(Request $request, $id)
     {
-        //
+        $findkepribadian = Kepribadian::find($id);
+        if($findkepribadian){      
+            $data = [
+                'nilai_kerajinan' => $request->nilai_kerajinan,
+                'nilai_kelakuan' => $request->nilai_kelakuan,
+                'nilai_kerapihan' => $request->nilai_kerapihan,
+            ];
+            Kepribadian::where('id',$id)->update($data);
+        }
+        return redirect()->to('/form-kepribadian/'.$request->nis);
     }
 
     /**

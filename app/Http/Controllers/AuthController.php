@@ -9,55 +9,109 @@ use Validator;
 use Hash;
 use Session;
 use App\User;
+use App\Models\Siswa;
+use App\Models\Guru;
  
  
 class AuthController extends Controller
 {
     public function showFormLogin()
     {
-        if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
-            //Login Success
-            return redirect()->route('home');
+        if (Auth::check()) { 
+            $user = Auth::user();
+            $id = Auth::id(); 
+            if($user->jenis_ptk){
+                return redirect()->to('/nilai?kode_guru='.$id );
+            }else{
+                return redirect()->to('/lihat-nilai?semester=1');
+            }
         }
         return view('pages.login');
     }
  
     public function login(Request $request)
-    {
-        // $rules = [
-        //     'email'                 => 'required|email',
-        //     'password'              => 'required|string'
+    { 
+        // $data = [
+        //     'kode_guru' => $request->input('username'),
+        //     // 'password'  => Hash::make($request->input('password')),
+        //     'password'  =>$request->input('password'),
         // ];
  
-        // $messages = [
-        //     'email.required'        => 'Email wajib diisi',
-        //     'email.email'           => 'Email tidak valid',
-        //     'password.required'     => 'Password wajib diisi',
-        //     'password.string'       => 'Password harus berupa string'
-        // ];
- 
-        // $validator = Validator::make($request->all(), $rules, $messages);
- 
-        // if($validator->fails()){
-        //     return redirect()->back()->withErrors($validator)->withInput($request->all);
+        // Auth::attempt($data);
+        // if (Auth::guard('web')->attempt([
+        //     'kode_guru' => $request->input('username'),
+        //     'password'  =>$request->input('password'),
+        //     ])) {
+        //     // Authentication passed...
+        //     $id = Auth::id(); 
+        //     return redirect()->to('/nilai?kode_guru='.$id );
+        // }else if(Auth::guard('siswa')->attempt([
+        //     'nis' => $request->input('username'),
+        //     'password'  =>$request->input('password'),
+        //     ])){
+        //     if (Auth::check()) { 
+        //         $id = Auth::id(); 
+        //         return redirect()->to('/lihat-nilai');
+        //     } else { 
+        //         Session::flash('error', 'Username atau password siswa salah');
+        //         return redirect()->route('login');
+        //     }
+        // } else {
+        //     Session::flash('error', 'Username atau password salah');
+        //     return redirect()->route('login');
         // }
- 
-        $data = [
-            'kode_guru' => $request->input('username'),
-            'password'  => $request->input('password'),
-        ];
- 
-        Auth::attempt($data);
- 
-        if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
-            //Login Success
-            return redirect()->route('/menu-guru');
- 
-        } else { // false
-            //Login Fail
-            Session::flash('error', 'Email atau password salah');
+
+        $guru = Guru::where('nuptk',$request->input('username'))->first();
+        $siswa = Siswa::find($request->input('username'));
+
+        if($siswa){
+            if(Hash::check($request->input('password'), $siswa->password)){
+                Auth::login($siswa);
+            }
+            if (Auth::guard('siswa')->check()) { 
+                $id = Auth::id(); 
+                return redirect()->to('/lihat-nilai?semester=1');
+            } else { 
+                Session::flash('error', 'Username atau password siswa salah');
+                return redirect()->route('login');
+            }
+        }else if($guru){
+            if(Hash::check($request->input('password'), $guru->password)){
+                Auth::login($guru);
+            }
+            if (Auth::check()) { 
+                $id = Auth::id(); 
+                $user = Auth::user(); 
+                // return view(var_dump($user));
+                if($user->jenis_ptk == "Guru Mapel"){
+                    return redirect()->to('/nilai?kode_guru='.$id );
+                }else if($user->jenis_ptk == "Kepala Sekolah"){
+                    return redirect()->to('/lihat-ledger');
+                }else{
+                    return redirect()->to('/kelas');
+                }
+            } else { 
+                Session::flash('error', 'Username atau password Guru salah');
+                return redirect()->route('login');
+            }
+        }else { 
+            Session::flash('error', 'Username atau password salah');
             return redirect()->route('login');
         }
+
+
+        // if (Auth::check()) { 
+        //     Session::flash('error', 'idk');
+
+        //     // return redirect()->route('nilai');
+        //     // $id = Auth::id(); 
+        //     // return redirect()->to('/nilai?kode_guru='.$id );
+
+        // } else { // false
+        //     //Login Fail
+        //     Session::flash('error', 'Username atau password salah');
+        //     return redirect()->route('login');
+        // }
  
     }
  
@@ -111,6 +165,12 @@ class AuthController extends Controller
     {
         Auth::logout(); // menghapus session yang aktif
         return redirect()->route('login');
+    }
+
+    public function profile()
+    {
+
+        return view('pages.profile');
     }
  
  

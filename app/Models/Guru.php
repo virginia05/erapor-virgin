@@ -11,6 +11,7 @@ class Guru extends Authenticatable
 {
     use HasFactory;
     protected $table = 'guru';
+    protected $guard = 'guru';
     protected $primaryKey = 'kode_guru';
     // protected $fillable = ['username', 'password'];
     protected $hidden = [
@@ -20,6 +21,6 @@ class Guru extends Authenticatable
 
     public function getAuthPassword()
     {
-     return $this->guru_password;
+     return $this->password;
     }
 }

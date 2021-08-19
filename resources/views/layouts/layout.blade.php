@@ -12,7 +12,7 @@
 
     <div id="main" class="d-flex" >
         <!-- sidebar content -->
-        <div id="sidebar" class="col-md-2 text-center" style="border-right: 1px solid;">
+        <div id="sidebar" class="col-md-2" style="border-right: 1px solid;">
             @include('includes.sidebar')
         </div>
 

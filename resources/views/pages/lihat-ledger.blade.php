@@ -25,6 +25,7 @@
                 @endforeach
               </ul>
             </div>
+            <a href="{{url('/cetak-ledger?tahun_ajaran='.$tahun_ajaran.'&kode_rombel='.$kode_rombel)}}" class="btn btn-success ml-3">Cetak Ledger</a>
         </div>
         <div class="mt-3 mb-2">
           <p>Nama Rombel : <b>{{$nama_rombel}}</b></p>

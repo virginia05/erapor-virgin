@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Guru;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class GuruController extends Controller
 {
@@ -12,6 +13,19 @@ class GuruController extends Controller
     {
         $all_guru = Guru::paginate(10);
         return view('pages.guru',compact('all_guru'));
+    }
+
+    public function lihat_guru()
+    {
+        $all_guru = Guru::paginate(10);
+        return view('pages.lihat-guru',compact('all_guru'));
+    }
+
+    public function cetak_guru()
+    {
+        $all_guru = Guru::all();
+        $pdf = PDF::loadview('cetak.guru',compact('all_guru'))->setPaper('a4', 'landscape');
+        return $pdf->download('laporan-guru-pdf.pdf');
     }
 
     public function form_guru(Request $request,$param)
@@ -81,23 +95,40 @@ class GuruController extends Controller
             // ], 200);
         }
     }
-    
 
-    protected $redirectTo = '/menu-guru';
-    public function __construct()
+    public function edit_guru_profile(Request $request,$id)
     {
-        $this->middleware('guest:guru')->except('logout');
+        $findGuru = Guru::where('kode_guru', $id)->first();
+        if($findGuru){
+            $dataGuru = [
+                'alamat' => $request->alamat,  
+                'tgl_lahir' => $request->tgl_lahir,  
+                'nomor' => $request->nomor,  
+                'email' => $request->email,  
+                'gelar' => $request->gelar,  
+                'sertifikasi' => $request->sertifikasi
+            ];
+            Guru::where('kode_guru',$id)->update($dataGuru);
+            return redirect()->to('/profile');
+        }
     }
-    public function showLoginForm()
-    {
-        return view('pages.login');
-    }
-    public function username()
-    {
-        return 'kode_guru';
-    }
-    protected function guard()
-    {
-        return Auth::guard('guru');
-    }
+
+
+    // protected $redirectTo = '/menu-guru';
+    // public function __construct()
+    // {
+    //     $this->middleware('guest:guru')->except('logout');
+    // }
+    // public function showLoginForm()
+    // {
+    //     return view('pages.login');
+    // }
+    // public function username()
+    // {
+    //     return 'kode_guru';
+    // }
+    // protected function guard()
+    // {
+    //     return Auth::guard('guru');
+    // }
 }

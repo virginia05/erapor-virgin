@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BebanAjar;
 use App\Models\Kelas;
+use App\Models\Siswa;
 use App\Models\Guru;
 use App\Models\Mapel;
 use App\Models\Rombel;
+use PDF;
 
 class BebanAjarController extends Controller
 {
@@ -45,6 +47,75 @@ class BebanAjarController extends Controller
         return view('pages.bebanAjar',compact('datas','all_rombel'));
     }
 
+    public function lihat_beban(Request $r)
+    {
+        $datas = BebanAjar::select(
+            'beban_ajar.id',
+            'guru.nama',
+            'mapel.nama_mapel',
+            'kelas.nama_kelas',
+            'rombel.kode_rombel')
+            ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
+            ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
+            ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
+            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->paginate(7);
+        $all_rombel = Rombel::all();
+
+        if($r->kode_rombel){
+           $datas = BebanAjar::select(
+            'beban_ajar.id',
+            'guru.nama',
+            'mapel.nama_mapel',
+            'kelas.nama_kelas',
+            'rombel.kode_rombel')
+            ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
+            ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
+            ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
+            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->where('rombel.kode_rombel',$r->kode_rombel)->paginate(7);
+        }
+
+        // return view(print_r($r->kode_rombel));
+
+        return view('pages.lihat-beban',compact('datas','all_rombel'));
+    }
+
+    public function cetak_beban(Request $r)
+    {
+        $datas = BebanAjar::select(
+            'beban_ajar.id',
+            'guru.nama',
+            'mapel.nama_mapel',
+            'kelas.nama_kelas',
+            'rombel.kode_rombel')
+            ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
+            ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
+            ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
+            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->paginate(7);
+        $all_rombel = Rombel::all();
+
+        if($r->kode_rombel){
+           $datas = BebanAjar::select(
+            'beban_ajar.id',
+            'guru.nama',
+            'mapel.nama_mapel',
+            'kelas.nama_kelas',
+            'rombel.kode_rombel')
+            ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
+            ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
+            ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
+            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->where('rombel.kode_rombel',$r->kode_rombel)->get();
+        }
+
+        $pdf = PDF::loadview('cetak.beban',compact('datas','all_rombel'));
+        return $pdf->download('laporan-beban-pdf.pdf');
+    }
+
+    
+
     public function form_beban(Request $request,$param)
     {
         $all_kelas = Kelas::all();
@@ -56,6 +127,7 @@ class BebanAjarController extends Controller
         }
 
         return view('pages.form-beban',compact('param','all_kelas','all_guru','all_mapel'));
+
     }
 
     public function tambah_beban(Request $request)
@@ -67,6 +139,21 @@ class BebanAjarController extends Controller
         $data->save();   
         return redirect()->to('/beban');
     }
+
+    public function reset()
+    {
+        // reset siswa id_kelas di set 1
+        // hapus all row beban_ajar
+        // tabel kelas id guru set id = 1 
+        BebanAjar::truncate();
+        $kelas = Kelas::all();
+        Kelas::query()->update(['kode_guru' => 1]);
+        Siswa::query()->update(['id_kelas' => 1]);
+
+        return redirect()->to('/kelas');
+    }
+
+
 
     public function hapus_beban(Request $request,$id)
     {

@@ -18,6 +18,7 @@ class CreateSiswaTable extends Migration
             $table->string('nama');
             $table->integer('id_kelas')->unsigned()->nullable();
             $table->string('alamat')->nullable();
+            $table->string('tahun_mulai',10)->nullable();
             $table->string('ttl')->nullable();
             $table->integer('nomor')->nullable();
             $table->string('email')->nullable();

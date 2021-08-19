@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Kepribadian;
+use App\Models\Nilai;
+use App\Models\Mapel;
 use App\Models\Siswa;
 use App\Models\Rombel;
 use App\Models\Guru;
@@ -26,7 +29,7 @@ class KelasController extends Controller
                 'rombel.nama_rombel',
                 'rombel.jurusan',
         )->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
-         ->join('guru', 'guru.kode_guru', '=', 'kelas.kode_guru')->paginate(10);
+         ->leftJoin('guru', 'guru.kode_guru', '=', 'kelas.kode_guru')->paginate(10);
 
          $all_rombel = Rombel::all();
          $all_kelas = Kelas::all();
@@ -54,8 +57,39 @@ class KelasController extends Controller
                 'id_kelas' => $id_kelas
             ];
             Siswa::where('nis',$nis)->update($datasiswa);
-            return redirect()->to('/kelas?id='.$id_kelas);
         }
+        $findsiswaAgain = Siswa::where('nis', $nis)->first();
+        $findKategoriMapel = Kelas::select(
+                'rombel.kategori_mapel',
+        )->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
+         ->join('siswa', 'siswa.id_kelas', '=', 'kelas.id_kelas')
+         ->where('siswa.nis',$nis)->first();
+
+        $mapels = json_decode($findKategoriMapel->kategori_mapel,true);
+        if($mapels==null){
+            $mapels = [];
+        }
+
+        $get_tahun_mulai = intval(substr($findsiswaAgain->tahun_mulai,0,4));
+        $get_tahun_skrng = intval(date('Y'));
+        
+        $hasil = $get_tahun_skrng - $get_tahun_mulai;
+        if($hasil == 0 || $hasil >= 9){
+            $hasil = 1;
+        }
+
+        foreach ($mapels as $key => $value) {
+            $id = Mapel::select('id_mapel')->where('nama_mapel',$value)->first();
+            $dataNilai = new Nilai;
+            $dataNilai->semester = $hasil;       
+            $dataNilai->tahun_ajaran = date('Y')."/".date('Y',strtotime('+1 year'));  
+            $dataNilai->id_mapel = $id->id_mapel; 
+            $dataNilai->nis = $nis; 
+            $dataNilai->save();
+        }
+
+        return redirect()->to('/kelas?id='.$id_kelas);
+
     }
 
     

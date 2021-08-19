@@ -3,11 +3,7 @@
 
     <div class="m-3">
       <iframe id="invisible" name="invisible" style="display:none;"></iframe>
-      @if (Auth::check())
-        {{-- lalala --}}
-      @else
-        {{-- lololol --}}
-      @endif
+      
 
       <h4>Kelas</h4>
         <hr>

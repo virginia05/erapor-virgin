@@ -20,8 +20,8 @@ class CreateNilaiTable extends Migration
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');
             $table->foreign('id_mapel')->references('id_mapel')->on('mapel')->onDelete('cascade');
             $table->string('catatan')->nullable();
-            $table->string('tahun_ajaran')->nullable();
-            $table->integer('semester');
+            $table->string('tahun_ajaran',10)->nullable();
+            $table->integer('semester')->default('1');
             $table->integer('UTS')->default('0');
             $table->integer('UAS')->default('0');
             $table->integer('pengetahuan')->default('0');

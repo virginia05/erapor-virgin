@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Absensi;
 use App\Models\BebanAjar;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -17,11 +18,12 @@ class AbsensiController extends Controller
      */
     public function index(Request $request)
     {
+        $id = Auth::id();
         $datas = BebanAjar::select(
                 'kelas.id_kelas',
                 'kelas.nama_kelas',
         )->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
-         ->where('beban_ajar.kode_guru', 2)->get();
+         ->where('beban_ajar.kode_guru', $id)->get();
 
          $id_kelas = $request->id_kelas;
 

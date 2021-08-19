@@ -42,8 +42,12 @@
               <input type="text" name="status_pegawai" class="form-control" id="exampleInputPassword7" required placeholder="" value="{{$guru->status_pegawai}}">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword8">Jenis PTK</label>
-              <input type="text" name="jenis_ptk" class="form-control" id="exampleInputPassword8" required placeholder="" value="{{$guru->jenis_ptk}}">
+              <label >Pilih Jenis PTK</label>
+              <select name="jenis_ptk" class="form-select w-100 p-2" aria-label="Default select example">
+                  <option value="Guru Mapel">Guru Mapel</option>
+                  <option value="Kepala Sekolah">Kepala Sekolah</option>
+                  <option value="Tenaga Administrasi Sekolah">Tenaga Administrasi Sekolah</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword9">Gelar</label>
@@ -89,9 +93,17 @@
               <input type="text" name="status_pegawai" class="form-control" id="exampleInputPassword7" required placeholder="">
             </div>
             <div class="form-group">
+              <label >Pilih Jenis PTK</label>
+              <select name="jenis_ptk" class="form-select w-100 p-2" aria-label="Default select example">
+                  <option value="Guru Mapel">Guru Mapel</option>
+                  <option value="Kepala Sekolah">Kepala Sekolah</option>
+                  <option value="Tenaga Administrasi Sekolah">Tenaga Administrasi Sekolah</option>
+              </select>
+            </div>
+            {{-- <div class="form-group">
               <label for="exampleInputPassword8">Jenis PTK</label>
               <input type="text" name="jenis_ptk" class="form-control" id="exampleInputPassword8" required placeholder="">
-            </div>
+            </div> --}}
             <div class="form-group">
               <label for="exampleInputPassword9">Gelar</label>
               <input type="text" name="gelar" class="form-control" id="exampleInputPassword9"  placeholder="">

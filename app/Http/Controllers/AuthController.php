@@ -162,8 +162,13 @@ class AuthController extends Controller
     }
  
     public function logout()
-    {
-        Auth::logout(); // menghapus session yang aktif
+    {   
+
+        if(Auth::check()){
+            Auth::logout(); // menghapus session yang aktif
+        }else{
+            Auth::guard('siswa')->logout();
+        }
         return redirect()->route('login');
     }
 

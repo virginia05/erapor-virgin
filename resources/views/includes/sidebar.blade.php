@@ -41,7 +41,7 @@
            <a class="btn-li my-2" href="{{url('/mapel')}}">Mapel</a>
            <a class="btn-li my-2" href="{{url('/beban')}}">Beban Ajar</a>
            <a class="btn-li my-2" href="{{url('/siswa')}}">Siswa</a>
-           <a class="btn-li my-2" href="{{url('/kelola-guru')}}">Guru</a>
+           <a class="btn-li my-2" href="{{url('/guru')}}">Guru</a>
        @endif
     @else
         <a class="btn-li my-2" href="{{url('/lihat-nilai?semester=1')}}">Lihat Nilai</a>

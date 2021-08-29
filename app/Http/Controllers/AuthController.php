@@ -86,7 +86,7 @@ class AuthController extends Controller
                 if($user->jenis_ptk == "Guru Mapel"){
                     return redirect()->to('/nilai?kode_guru='.$id );
                 }else if($user->jenis_ptk == "Kepala Sekolah"){
-                    return redirect()->to('/lihat-ledger');
+                    return redirect()->to('/ledger?tahun_ajaran=2021/2022&kode_rombel=1');
                 }else{
                     return redirect()->to('/kelas');
                 }

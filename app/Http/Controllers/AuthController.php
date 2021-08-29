@@ -66,7 +66,7 @@ class AuthController extends Controller
 
         if($siswa){
             if(Hash::check($request->input('password'), $siswa->password)){
-                Auth::login($siswa);
+               Auth::guard('siswa')->login($siswa);
             }
             if (Auth::guard('siswa')->check()) { 
                 $id = Auth::id(); 

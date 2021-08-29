@@ -51,7 +51,7 @@ class NilaiController extends Controller
              ->join('nilai', 'siswa.nis', '=', 'nilai.nis')
              ->where('guru.kode_guru', $id)
              ->where('beban_ajar.id_mapel', $mapelAjar)
-             ->paginate(7);
+             ->paginate(7)->withQueryString();
          }else if($kelasAjar){
             $datas = BebanAjar::select(
                     'siswa.nama',
@@ -73,7 +73,7 @@ class NilaiController extends Controller
              ->join('nilai', 'siswa.nis', '=', 'nilai.nis')
              ->where('guru.kode_guru', $id)
              ->where('beban_ajar.id_kelas', $kelasAjar)
-             ->paginate(7);
+             ->paginate(7)->withQueryString();
          }else{
             $datas = BebanAjar::select(
                     'siswa.nama',
@@ -96,7 +96,7 @@ class NilaiController extends Controller
              ->where('guru.kode_guru', $id)
              ->orWhere('beban_ajar.id_mapel', $mapelAjar)
              ->orWhere('beban_ajar.id_kelas', $kelasAjar)
-             ->paginate(7);
+             ->paginate(7)->withQueryString();
          }
 
         $mapelYangDiajar = BebanAjar::select(

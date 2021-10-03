@@ -29,7 +29,7 @@
             <a class="btn-li my-2" href="{{url('/absensi')}}">Kelola Absensi</a>
         @elseif ($user->jenis_ptk == "Kepala Sekolah")
             <a class="btn-li my-2" href="{{url('/ledger?tahun_ajaran=2021/2022&kode_rombel=1')}}">Lihat Ledger</a>
-            <b class=" my-2">Lihat Data</b>
+            <b class=" my-2">Laporan</b>
            <a class="btn-li my-2" href="{{url('/lihat-beban')}}">Beban Ajar</a>
            <a class="btn-li my-2" href="{{url('/lihat-siswa')}}">Siswa</a>
            <a class="btn-li my-2" href="{{url('/lihat-guru')}}">Guru</a>

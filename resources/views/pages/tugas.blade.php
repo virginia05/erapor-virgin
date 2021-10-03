@@ -25,9 +25,9 @@
                   <input type="hidden" name="nis" value="{{ $nis }}">
                   <input type="number" name="tugas_value" class="form-control-plaintext" id="staticTugas{{$tugas->id}}" value="{{$tugas->nilai}}" min="0" max="100">
                   <button class="btn btn-warning ml-3" type="submit">
-                    Edit
+                    Ubah
                   </button>
-                  <a class="btn btn-danger ml-3" href="{{ url("/delete/nilaiTugas/$tugas->id") }}" onclick="return confirm('Apakah Anda Yakin?')">Hapus</a>
+                  <a class="btn btn-danger ml-3" href="{{ url("/delete/nilaiTugas/$tugas->id") }}" onclick="return confirm('Hapus Nilai Tugas?')">Hapus</a>
                 </form>
                 </div>
             </div>

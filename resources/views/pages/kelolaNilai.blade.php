@@ -8,6 +8,7 @@
           $user = Auth::user();
         @endphp
       @endif
+      <h2>Kelola Nilai Siswa</h2><hr>
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>
         <div class="row my-3">
           <div class="dropdown mx-3">
@@ -29,7 +30,7 @@
           <table class="table">
             <thead class="thead-dark">
               <tr class="text-center">
-                <th scope="col">Nis</th>
+                <th scope="col">NIS</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Kelas</th>
                 <th scope="col">Mata Pelajaran</th>
@@ -80,7 +81,8 @@
             {!! $datas->links('pagination::bootstrap-4') !!}
         </div>
 
-        @if ($isWalikelas)
+<!-- KHUSUS WALI KELAS KELOLA NILAI EKSTRA-->
+@if ($isWalikelas)
           <hr>
           {{-- {{$kelasDiwalikan}} --}}
           <table class="table">
@@ -89,7 +91,7 @@
                 <th scope="col">Nis</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Kepribadian</th>
-                <th scope="col">Ekskul</th>
+                <th scope="col">Ekstrakurikuler</th>
                 <th scope="col">Catatan</th>
               </tr>
             </thead>

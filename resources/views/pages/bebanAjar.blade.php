@@ -2,6 +2,7 @@
 @section('content')
 
     <div class="m-3">
+      <h2>Daftar Beban Mengajar Guru</h2>
       @if (Auth::check())
         {{-- lalala --}}
       @else
@@ -9,17 +10,19 @@
       @endif
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>
         <div class="dropdown ">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Rombel
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Rombel</button>
+            <a class="btn btn-primary my-3" href="{{ url("/form-beban/tambah") }}">Tambah Beban Ajar</a>
+            <a href="{{ url('/cetak_pdf_beban') }}" class="ml-2 my-2 btn btn-primary">Cetak PDF</a>
+              
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 @foreach ($all_rombel as $rombel)
-                  <li><a class="dropdown-item" href="{{url('/beban?kode_rombel='.$rombel->kode_rombel)}}">{{$rombel->nama_rombel}} {{$rombel->jurusan}}</a></li>
+                <li><a class="dropdown-item" href="{{url('/beban?kode_rombel='.$rombel->kode_rombel)}}">{{$rombel->nama_rombel}} {{$rombel->jurusan}}</a></li>
                 @endforeach
-              </ul>
-            </div>
+            </ul>
         </div>
-        <a class="btn btn-primary my-3" href="{{ url("/form-beban/tambah") }}">Tambah Beban Ajar</a>
+    </div>
+  
+    <!-- FORM BEBAN AJAR -->
         <div class="table-responsive mb-3">
           <table class="table">
             <thead class="thead-dark">
@@ -39,8 +42,8 @@
                 <td class="align-middle">{{ $data->nama_kelas }}</td>
                 <td class="align-middle">{{ $data->nama_mapel }}</td>
                 <td class="d-flex justify-content-center">
-                  <a class="btn btn-warning mr-2" href="{{ url("/form-beban/edit?id=$data->id") }}">Edit</a>
-                  <a class="btn btn-danger" href="{{url('/hapus-beban/' . $data->id)}}" onclick="return confirm('Apakah Anda Yakin?')">Hapus</a>
+                  <a class="btn btn-warning mr-2" href="{{ url("/form-beban/edit?id=$data->id") }}">Ubah</a>
+                  <a class="btn btn-danger" href="{{url('/hapus-beban/' . $data->id)}}" onclick="return confirm('Hapus Beban Ajar?')">Hapus</a>
                 </td>
               </tr>
               @endforeach

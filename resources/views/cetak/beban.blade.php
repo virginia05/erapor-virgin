@@ -6,8 +6,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="m-3">
-        <h3>Laporan Beban Ajar</h3>
+    <div class="m-3">
+        <h3 style="text-align: center;">Daftar Nama dan Beban Mengajar Guru</h3>
+        <h3 style="text-align: center;"> SMK Yapan Indonesia</h3> <hr>
         <div class="table-responsive mb-3">
           <table class="table">
             <thead class="thead-dark">
@@ -32,9 +33,7 @@
         </div>
         <div class="d-flex justify-content-center">
             {!! $datas->links('pagination::bootstrap-4') !!}
-        </div>
-   
-     
+        </div> 
     </div>
 </body>
 </html>

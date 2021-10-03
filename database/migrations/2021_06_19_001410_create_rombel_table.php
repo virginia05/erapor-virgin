@@ -14,9 +14,9 @@ class CreateRombelTable extends Migration
     public function up()
     {
         Schema::create('rombel', function (Blueprint $table) {
-            $table->string('kode_rombel')->primary();
-            $table->string('nama_rombel');
-            $table->string('jurusan');
+            $table->integer('kode_rombel')->primary();
+            $table->string('nama_rombel', 10);
+            $table->string('jurusan', 15);
             $table->text('kategori_mapel')->nullable();
             $table->timestamps();
         });

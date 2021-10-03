@@ -2,9 +2,9 @@
 @section('content')
     <div class="m-3 mt-4 mb-4">
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>
-        
+        <h2>Ledger</h2><hr>
         <div class="d-flex align-items-center my-3">
-          <div class="dropdown mx-3">
+          <div class="dropdown mx-1">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Tahun Ajaran
             </button>
@@ -25,7 +25,7 @@
                 @endforeach
               </ul>
             </div>
-            <a href="{{url('/cetak-ledger?tahun_ajaran='.$tahun_ajaran.'&kode_rombel='.$kode_rombel)}}" class="btn btn-success ml-3">Cetak Ledger</a>
+            <a href="{{url('/cetak-ledger?tahun_ajaran='.$tahun_ajaran.'&kode_rombel='.$kode_rombel)}}" class="btn btn-success ml-2">Cetak PDF</a>
         </div>
         <div class="mt-3 mb-2">
           <p>Nama Rombel : <b>{{$nama_rombel}}</b></p>

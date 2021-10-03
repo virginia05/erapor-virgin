@@ -91,11 +91,11 @@ class AuthController extends Controller
                     return redirect()->to('/kelas');
                 }
             } else { 
-                Session::flash('error', 'Username atau password Guru salah');
+                Session::flash('error', 'Username atau Password Salah ');
                 return redirect()->route('login');
             }
         }else { 
-            Session::flash('error', 'Username atau password salah');
+            Session::flash('error', 'Masukan Username atau Password');
             return redirect()->route('login');
         }
 

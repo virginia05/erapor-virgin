@@ -3,13 +3,12 @@
 
     <div class="m-3">
       <iframe id="invisible" name="invisible" style="display:none;"></iframe>
-      
 
-      <h4>Kelas</h4>
-        <hr>
+<!-- daftar tambah siswa kedalam kelas -->
+      <h2>Daftar Kelas</h2>
         <div class="d-flex align-items-center my-3">
           <div class="dropdown mx-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Pilih Kelas
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -21,7 +20,7 @@
             </ul>
           </div>
           <div class="dropdown ">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   Pilih Siswa
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -55,9 +54,10 @@
         <div class="d-flex justify-content-center">
             {!! $pilihanKelas->links('pagination::bootstrap-4') !!}
         </div>
-
-      <h4>Walikelas</h4>
+        
+<!--Daftar Walikelas  -->
       <hr>
+      <h2>Daftar Walikelas</h2>
         <button class="btn btn-success my-3" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Kelas</button>
         <table class="table">
           <thead class="thead-dark">
@@ -95,7 +95,6 @@
               <td>
               	<button class="btn btn-success" type="submit">Ganti Walikelas</button>
                 </form>
-
               </td>
             </tr>
             @endforeach
@@ -104,7 +103,6 @@
         <div class="d-flex justify-content-center">
             {!! $kelas->links('pagination::bootstrap-4') !!}
         </div>
-
 
          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -138,15 +136,12 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" data-bs-dismiss="modal" onclick="reload()" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                <button type="submit" data-bs-dismiss="modal" onclick="reload()" class="btn btn-primary">Simpan</button>
                 </form>
               </div>
             </div>
           </div>
-
-       
-
         <script type="text/javascript">
           function reload(){
             location.reload();

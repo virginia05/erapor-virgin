@@ -2,10 +2,8 @@
 @section('content')
     <div class="m-3 mt-4 mb-4">
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>
-        <div class="d-flex align-items-baseline">
-
-        </div>
-        <hr>
+        <div class="d-flex align-items-baseline"></div>
+        <h2>Kelola Profil</h2><hr>
         @if (Auth::check()) 
         @php
           $guru = Auth::user();
@@ -22,15 +20,20 @@
               <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="" value="{{$guru->nama}}">
             </div>
             <div class="form-group">
+              <label for="exampleInputPassword11">Gender</label>
+              <p><input type="radio" name="gender" id="exampleInputPassword11" value="Laki-Laki" required placeholder="">   Laki-Laki 
+              <br><input type="radio" name="gender"  id="exampleInputPassword11" value="Perempuan"  required placeholder="">   Perempuan</p>
+            </div>
+            <div class="form-group">
               <label for="exampleInputPassword3">Alamat</label>
               <input type="text" name="alamat" class="form-control" id="exampleInputPassword3" placeholder="" value="{{$guru->alamat}}">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword4">Tanggal Lahir</label>
-              <input type="text" name="tgl_lahir" class="form-control" id="exampleInputPassword4" required placeholder="" value="{{$guru->tgl_lahir}}">
+              <input type="date" name="tgl_lahir" class="form-control" id="exampleInputPassword4" required placeholder="" value="{{$guru->tgl_lahir}}">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword5">Nomor Telp</label>
+              <label for="exampleInputPassword5">Nomor Handphone</label>
               <input type="text" name="nomor" class="form-control" id="exampleInputPassword5" placeholder="" value="{{$guru->nomor}}">
             </div>
             <div class="form-group">
@@ -64,15 +67,24 @@
               <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="" disabled="true" value="{{$siswa->nama}}">
             </div>
             <div class="form-group">
+              <label for="exampleInputPassword7">Gender</label>
+              <p><input type="radio" name="gender" id="exampleInputPassword7" value="Laki-Laki" required placeholder="">   Laki-Laki 
+              <br><input type="radio" name="gender"  id="exampleInputPassword7" value="Perempuan"  required placeholder="">   Perempuan</p>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword8">Nama Ibu</label>
+              <input type="text" name="nama_ibu" class="form-control" id="exampleInputPassword8" placeholder="" value="{{$siswa->nama_ibu}}">
+            </div>
+            <div class="form-group">
               <label for="exampleInputPassword3">Alamat</label>
               <input type="text" name="alamat" class="form-control" id="exampleInputPassword3" placeholder="" value="{{$siswa->alamat}}">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword4">Tanggal Lahir</label>
-              <input type="text" name="ttl" class="form-control" id="exampleInputPassword4" required placeholder="" value="{{$siswa->ttl}}">
+              <input type="date" name="ttl" class="form-control" id="exampleInputPassword4" required placeholder="" value="{{$siswa->ttl}}">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword5">Nomor Telp</label>
+              <label for="exampleInputPassword5">Nomor Handphone</label>
               <input type="text" name="nomor" class="form-control" id="exampleInputPassword5" placeholder="" value="{{$siswa->nomor}}">
             </div>
             <div class="form-group">

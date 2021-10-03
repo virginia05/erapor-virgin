@@ -9,7 +9,7 @@
         @endforeach
       </ul>
 
-      <a href="{{ url('/cetak_pdf?semester='.$semesterPilihan) }}" class="my-3 btn btn-primary">Cetak Rapot</a>
+      <a href="{{ url('/cetak_pdf?semester='.$semesterPilihan) }}" class="my-3 btn btn-primary">Cetak Rapor</a>
 
       <div class="mt-3">
         <p>Nama : <b>{{$identitas->nama}}</b></p>

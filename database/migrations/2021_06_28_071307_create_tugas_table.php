@@ -16,9 +16,9 @@ class CreateTugasTable extends Migration
         Schema::create('tugas', function (Blueprint $table) {
             $table->id();
             $table->integer('id_mapel')->unsigned();
-            $table->string('nis');
+            $table->string('nis', 10);
             $table->string('tahun_ajaran');
-            $table->integer('semester');
+            $table->integer('semester')->default('1');
             $table->integer('nilai');
             $table->string('keterangan');
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');

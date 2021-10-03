@@ -6,13 +6,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h3>Laporan Siswa</h3>
-
+    <h3 style="text-align: center;">Daftar Peserta Didik</h3>
+    <h3 style="text-align: center;">SMK Yapan Indonesia</h3><hr>
           <table class="table">
             <thead class="thead-dark">
               <tr class="text-center" >
                 <th class="align-middle" scope="col">NIS</th>
                 <th class="align-middle" scope="col">Nama</th>
+                <th class="align-middle" scope="col">Gender</th>
+                <th class="align-middle" scope="col">Nama Ibu</th>
                 <th class="align-middle" scope="col">Id Kelas</th>
                 <th class="align-middle" scope="col">Alamat</th>
                 <th class="align-middle" scope="col">Tanggal Lahir</th>
@@ -25,6 +27,8 @@
               <tr class="text-center" >
                 <th class="align-middle">{{ $data->nis }}</th>
                 <td class="align-middle">{{ $data->nama }}</td>
+                <td class="align-middle">{{ $data->gender }}</td>
+                <td class="align-middle">{{ $data->nama_ibu }}</td>
                 <td class="align-middle">{{ $data->id_kelas }}</td>
                 <td class="align-middle">{{ $data->alamat }}</td>
                 <td class="align-middle">{{ $data->ttl }}</td>

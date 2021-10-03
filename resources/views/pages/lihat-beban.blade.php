@@ -2,20 +2,17 @@
 @section('content')
 
     <div class="m-3">
-      
+     <h2>Daftar Beban Mengajar Guru</h2> 
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>
         <div class="dropdown ">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Rombel
-              </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 @foreach ($all_rombel as $rombel)
                   <li><a class="dropdown-item" href="{{url('/beban?kode_rombel='.$rombel->kode_rombel)}}">{{$rombel->nama_rombel}} {{$rombel->jurusan}}</a></li>
                 @endforeach
               </ul>
-            </div>
+              <a href="{{ url('/cetak_pdf_beban') }}" class="my-3 btn btn-primary">Cetak PDF</a>
         </div>
-        <a href="{{ url('/cetak_pdf_beban') }}" class="my-3 btn btn-primary">Cetak Beban</a>
+
         <div class="table-responsive mb-3">
           <table class="table">
             <thead class="thead-dark">
@@ -41,7 +38,6 @@
         <div class="d-flex justify-content-center">
             {!! $datas->links('pagination::bootstrap-4') !!}
         </div>
-   
-     
+  
     </div>
 @stop

@@ -14,17 +14,18 @@ class CreateGuruTable extends Migration
     public function up()
     {
         Schema::create('guru', function (Blueprint $table) {
-            $table->string('kode_guru')->primary();
-            $table->string('nuptk')->nullable();
-            $table->string('nama');
+            $table->integer('kode_guru')->primary();
+            $table->string('nuptk', 16)->nullable();
+            $table->string('nama', 30);
+            $table->string('gender')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('tgl_lahir')->nullable();
+            $table->date('tgl_lahir')->nullable();
             $table->bigInteger('nomor')->nullable();
-            $table->string('email')->nullable();
-            $table->string('status_pegawai')->nullable();
-            $table->string('jenis_ptk')->nullable();
+            $table->string('email', 30)->nullable();
+            $table->string('status_pegawai', 25)->nullable();
+            $table->string('jenis_ptk', 30)->nullable();
             $table->string('gelar')->nullable();
-            $table->string('sertifikasi')->nullable();
+            $table->string('sertifikasi', 30)->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

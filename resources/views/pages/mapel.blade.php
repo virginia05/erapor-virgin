@@ -2,13 +2,14 @@
 @section('content')
 
     <div class="m-3">
+      <h2>Daftar Mata Pelajaran</h2>
       @if (Auth::check())
         {{-- lalala --}}
       @else
         {{-- lololol --}}
       @endif
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>
-        <a class="btn btn-primary my-3" href="{{ url("/form-mapel/tambah") }}">Tambah Mapel</a>
+        <a class="btn btn-primary my-3" href="{{ url("/form-mapel/tambah") }}">Tambah Data</a>
         <div class="table-responsive mb-3">
           <table class="table">
             <thead class="thead-dark">
@@ -26,8 +27,8 @@
                 <td class="align-middle">{{ $data->nama_mapel }}</td>
                 <td class="align-middle">{{ $data->KKM }}</td>
                 <td class="d-flex justify-content-center">
-                  <a class="btn btn-warning mr-2" href="{{ url("/form-mapel/edit?id=$data->id_mapel") }}">Edit</a>
-                  <a class="btn btn-danger" href="{{url('/hapus-mapel/' . $data->id_mapel)}}" onclick="return confirm('Apakah Anda Yakin?')">Hapus</a>
+                  <a class="btn btn-warning mr-2" href="{{ url("/form-mapel/edit?id=$data->id_mapel") }}">Ubah</a>
+                  <a class="btn btn-danger" href="{{url('/hapus-mapel/' . $data->id_mapel)}}" onclick="return confirm('Hapus Mapel?')">Hapus</a>
                 </td>
               </tr>
               @endforeach
@@ -97,7 +98,5 @@
             
           @endfor
         </div>
-        
-     
     </div>
 @stop

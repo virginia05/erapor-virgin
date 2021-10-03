@@ -2,7 +2,8 @@
 @section('content')
 
     <div class="m-3">
-        <a href="{{ url('/cetak_pdf_guru') }}" class="my-3 btn btn-primary">Cetak Beban</a>
+      <h2>Data Tenaga Pendidik</h2>
+        <a href="{{ url('/cetak_pdf_guru') }}" class="my-3 btn btn-primary">Cetak PDF</a>
 
         <div class="table-responsive mb-3">
           <table class="table">
@@ -11,6 +12,7 @@
                 <th class="align-middle" scope="col">Kode Guru</th>
                 <th class="align-middle" scope="col">NUPTK</th>
                 <th class="align-middle" scope="col">Nama</th>
+                <th class="align-middle" scope="col">Gender</th>
                 <th class="align-middle" scope="col">Alamat</th>
                 <th class="align-middle" scope="col">Tanggal Lahir</th>
                 <th class="align-middle" scope="col">Nomor</th>
@@ -27,6 +29,7 @@
                 <th class="align-middle" scope="row">{{ $data->kode_guru }}</th>
                 <td class="align-middle">{{ $data->nuptk }}</td>
                 <td class="align-middle">{{ $data->nama }}</td>
+                <td class="align-middle">{{ $data->gender }}</td>
                 <td class="align-middle">{{ $data->alamat }}</td>
                 <td class="align-middle">{{ $data->tgl_lahir }}</td>
                 <td class="align-middle">{{ $data->nomor }}</td>

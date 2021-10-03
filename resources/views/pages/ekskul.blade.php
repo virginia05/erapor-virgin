@@ -10,7 +10,7 @@
         </div>
         <hr>
 
-        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambahkan Ekstrakulikuler</button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambahkan Ekstrakurikuler</button>
         
         <div class="my-4 mx-2">          
         @forelse($datas as $key => $ekskul)
@@ -37,12 +37,12 @@
                   <button class="btn btn-warning ml-3" type="submit">
                     Edit
                   </button>
-                  <a class="btn btn-danger ml-3" href="{{ url("/hapus-ekskul/$ekskul->id") }}" onclick="return confirm('Apakah Anda Yakin?')">Hapus</a>
+                  <a class="btn btn-danger ml-3" href="{{ url("/hapus-ekskul/$ekskul->id") }}" onclick="return confirm('Hapus Nilai?')">Hapus</a>
                 </form>
                 </div>
             </div>
         @empty
-            <p class="h5 mt-4">Belum Ada Nilai Ekstrakulikuler</p>
+            <p class="h5 mt-4">Belum Ada Nilai Ekstrakurikuler</p>
         @endforelse
         </div>
         
@@ -52,7 +52,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Ekstrakulikuler</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Ekstrakurikuler</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">

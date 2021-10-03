@@ -31,7 +31,9 @@ class SiswaController extends Controller
     {
         $data = new Siswa;   
         $data->nis = $request->nis;       
-        $data->nama = $request->nama;  
+        $data->nama = $request->nama; 
+        $data->gender = $request->gender; 
+        $data->nama_ibu = $request->nama_ibu;
         $data->alamat = $request->alamat;  
         $data->id_kelas = '1';  
         $data->ttl = $request->ttl;  
@@ -57,7 +59,9 @@ class SiswaController extends Controller
         if($findsiswa){
             $datasiswa = [
                 'nis' => $request->nis,       
-                'nama' => $request->nama,  
+                'nama' => $request->nama, 
+                'gender' => $request->gender, 
+                'nama_ibu' => $request->nama_ibu,
                 'alamat' => $request->alamat,  
                 'ttl' => $request->ttl,  
                 'nomor' => $request->nomor,  
@@ -75,7 +79,9 @@ class SiswaController extends Controller
     {
         $findsiswa = Siswa::where('nis', $id)->first();
         if($findsiswa){
-            $datasiswa = [     
+            $datasiswa = [ 
+                'gender' => $request->gender,
+                'nama_ibu' => $request->nama_ibu,    
                 'alamat' => $request->alamat,  
                 'ttl' => $request->ttl,  
                 'nomor' => $request->nomor,  

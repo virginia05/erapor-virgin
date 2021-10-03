@@ -15,8 +15,8 @@ class CreateAbsensiTable extends Migration
     {
         Schema::create('absensi', function (Blueprint $table) {
             $table->id();
-            $table->string('nis');
-            $table->integer('semester');
+            $table->string('nis', 10);
+            $table->integer('semester')->default('1');
             $table->string('sakit');
             $table->string('izin');
             $table->string('alfa');

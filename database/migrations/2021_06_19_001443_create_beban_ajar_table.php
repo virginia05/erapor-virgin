@@ -15,7 +15,7 @@ class CreateBebanAjarTable extends Migration
     {
         Schema::create('beban_ajar', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_guru');
+            $table->integer('kode_guru');
             $table->integer('id_mapel')->unsigned();
             $table->integer('id_kelas')->unsigned();
             $table->foreign('kode_guru')->references('kode_guru')->on('guru')->onDelete('cascade');

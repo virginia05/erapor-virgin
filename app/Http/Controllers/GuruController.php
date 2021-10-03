@@ -48,7 +48,8 @@ class GuruController extends Controller
         $data = new Guru;
         $data->kode_guru = $kode_guru;       
         $data->nuptk = $request->nuptk;       
-        $data->nama = $request->nama;  
+        $data->nama = $request->nama;
+        $data->gender = $request->gender;
         $data->alamat = $request->alamat;  
         $data->tgl_lahir = $request->tgl_lahir;  
         $data->nomor = $request->nomor;  
@@ -78,7 +79,8 @@ class GuruController extends Controller
         if($findGuru){
             $dataGuru = [
                 'nuptk' => $request->nuptk,       
-                'nama' => $request->nama,  
+                'nama' => $request->nama, 
+                'gender' => $request->gender, 
                 'alamat' => $request->alamat,  
                 'tgl_lahir' => $request->tgl_lahir,  
                 'nomor' => $request->nomor,  
@@ -101,6 +103,7 @@ class GuruController extends Controller
         $findGuru = Guru::where('kode_guru', $id)->first();
         if($findGuru){
             $dataGuru = [
+                'gender' => $request->gender,
                 'alamat' => $request->alamat,  
                 'tgl_lahir' => $request->tgl_lahir,  
                 'nomor' => $request->nomor,  

@@ -10,5 +10,5 @@
     </div>
 </div> --}}
 <nav class="navbar navbar-dark bg-dark">
-  <span class="navbar-brand mb-0 h1">SMK YAPAN</span>
+  <span class="navbar-brand mb-0 h1">E-RAPOR SMK YAPAN INDONESIA</span>
 </nav>

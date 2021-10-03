@@ -16,10 +16,10 @@ class CreateNilaiTable extends Migration
         Schema::create('nilai', function (Blueprint $table) {
             $table->increments('id_nilai');
             $table->integer('id_mapel')->unsigned();
-            $table->string('nis');
+            $table->string('nis', 10);
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');
             $table->foreign('id_mapel')->references('id_mapel')->on('mapel')->onDelete('cascade');
-            $table->string('tahun_ajaran',10)->nullable();
+            $table->string('tahun_ajaran')->nullable();
             $table->integer('semester')->default('1');
             $table->integer('UTS')->default('0');
             $table->integer('UAS')->default('0');

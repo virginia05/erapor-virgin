@@ -8,11 +8,14 @@
             Kembali
           </a>
         </div>
-        <hr>
+
+<!-- form edit beban ajar guru -->
         @if ($param === 'edit') 
         <div class="my-4 mx-2">    
           <form class="" method="post" action="{{ url("/edit-beban/$beban->id") }}" >
             @csrf
+            <h2>Ubah Data Beban Mengajar</h2>
+            <hr>
             <div class="form-group">
               <label >Pilih Guru</label>
               <select name="kode_guru" class="form-select w-100 p-2" aria-label="Default select example">
@@ -41,12 +44,16 @@
                 @endforeach
               </select>
             </div>
-            <button class="btn btn-success" type="submit" onclick="{{url('/beban')}}">Simpan</button>
+            <button class="btn btn-success" type="submit" onclick="{{url('/beban')}}">Ubah Data</button>
           </form>
         </div>
         @else 
+
+<!-- form tambah beban ajar guru -->
         <div class="my-4 mx-2">    
           <form class="" method="post" action="{{ url("/tambah-beban") }}">
+          <h2>Tambah Beban Mengajar</h2>
+          <hr>
             @csrf
             <div class="form-group">
               <label >Pilih Guru</label>
@@ -76,12 +83,10 @@
                 @endforeach
               </select>
             </div>
-            <button class="btn btn-success" type="submit">Simpan</button>
+            <button class="btn btn-success" type="submit">Simpan Data</button>
           </form>
         </div>
         @endif
-
-
         
     </div>
 @stop

@@ -15,8 +15,8 @@ class CreateKepribadianTable extends Migration
     {
         Schema::create('kepribadian', function (Blueprint $table) {
             $table->id();
-            $table->string('nis');
-            $table->string('tahun_ajaran',10)->nullable();
+            $table->string('nis', 10);
+            $table->string('tahun_ajaran')->nullable();
             $table->integer('semester')->default('1');
             $table->string('nilai_kerajinan')->default('0');
             $table->string('nilai_kelakuan')->default('0');

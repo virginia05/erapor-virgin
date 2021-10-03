@@ -12,11 +12,12 @@
     }
   </style>
 <body>
-    <h3>Laporan Ledger</h3>
+    <h3 style="text-align: center;">Laporan Ledger Siswa/i</h3>
+    <h3 style="text-align: center;">SMK Yapan Indonesia</h3><hr>
     <div class="mt-3 mb-2">
           <p>Nama Rombel : <b>{{$nama_rombel}}</b></p>
           <p>Tahun Ajaran : <b>{{$tahun_ajaran}}</b></p>
-        </div>
+    </div>
           <table width="100%" class="table" style="table-layout:fixed;">
             <thead class="thead-dark">
               <tr class="text-center">
@@ -58,7 +59,7 @@
                 </tr>
               @endforeach
             </tbody>
-          </table>
-    
+          </table> <br>
+    <h6 style="text-align: right;">Kepala Sekolah</h6>
 </body>
 </html>

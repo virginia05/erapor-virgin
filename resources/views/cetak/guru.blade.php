@@ -12,13 +12,15 @@
     }
   </style>
 <body>
-    <h3>Laporan Guru</h3>
+    <h3 style="text-align: center;">Daftar Pendidik dan Tenaga Pendidikan</h3>
+    <h3 style="text-align: center;">SMK Yapan Indonesia</h3><hr>
           <table class="table table-bordered" style="table-layout:fixed;">
             <thead class="thead-dark">
               <tr class="text-center" style="" >
                 <th class="align-middle" scope="col">Kode Guru</th>
                 <th class="align-middle" scope="col">NUPTK</th>
                 <th class="align-middle" scope="col">Nama</th>
+                <th class="align-middle" scope="col">Gender</th>
                 <th class="align-middle" scope="col">Alamat</th>
                 <th class="align-middle" scope="col">Tanggal Lahir</th>
                 <th class="align-middle" scope="col">Nomor</th>
@@ -35,6 +37,7 @@
                 <th class="align-middle" scope="row">{{ $data->kode_guru }}</th>
                 <td class="align-middle">{{ $data->nuptk }}</td>
                 <td class="align-middle">{{ $data->nama }}</td>
+                <td class="align-middle">{{ $data->gender }}</td>
                 <td class="align-middle">{{ $data->alamat }}</td>
                 <td class="align-middle">{{ $data->tgl_lahir }}</td>
                 <td class="align-middle">{{ $data->nomor }}</td>

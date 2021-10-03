@@ -15,7 +15,7 @@ class CreateEkstrakulikulerTable extends Migration
     {
         Schema::create('ekstrakulikuler', function (Blueprint $table) {
             $table->id();
-            $table->string('nis');
+            $table->string('nis', 10);
             $table->string('nama_eks');
             $table->integer('semester');
             $table->integer('predikat')->nullable();

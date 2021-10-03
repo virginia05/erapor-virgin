@@ -16,15 +16,15 @@ class CreateGuruTable extends Migration
         Schema::create('guru', function (Blueprint $table) {
             $table->integer('kode_guru')->primary();
             $table->string('nuptk', 16)->nullable();
-            $table->string('nama', 30);
-            $table->string('gender')->nullable();
-            $table->string('alamat')->nullable();
+            $table->string('nama', 50);
+            $table->string('gender',10)->nullable();
+            $table->string('alamat',100)->nullable();
             $table->date('tgl_lahir')->nullable();
-            $table->bigInteger('nomor')->nullable();
-            $table->string('email', 30)->nullable();
-            $table->string('status_pegawai', 25)->nullable();
-            $table->string('jenis_ptk', 30)->nullable();
-            $table->string('gelar')->nullable();
+            $table->string('nomor',14)->nullable();
+            $table->string('email', 70)->nullable();
+            $table->string('status_pegawai', 30)->nullable();
+            $table->string('jenis_ptk', 40)->nullable();
+            $table->string('gelar',20)->nullable();
             $table->string('sertifikasi', 30)->nullable();
             $table->string('password');
             $table->rememberToken();

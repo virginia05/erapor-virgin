@@ -19,14 +19,14 @@ class CreateNilaiTable extends Migration
             $table->string('nis', 10);
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');
             $table->foreign('id_mapel')->references('id_mapel')->on('mapel')->onDelete('cascade');
-            $table->string('tahun_ajaran')->nullable();
-            $table->integer('semester')->default('1');
-            $table->integer('UTS')->default('0');
-            $table->integer('UAS')->default('0');
-            $table->integer('pengetahuan')->default('0');
-            $table->integer('keterampilan')->default('0');
-            $table->integer('sikap')->default('0');
-            $table->integer('jumlah')->default('0');
+            $table->string('tahun_ajaran',10)->nullable();
+            $table->decimal('semester', 3,0)->default(1);
+            $table->decimal('UTS', 3,0)->default(0);
+            $table->decimal('UAS', 3,0)->default(0);
+            $table->decimal('pengetahuan', 3,0)->default(0);
+            $table->decimal('keterampilan', 3,0)->default(0);
+            $table->decimal('sikap', 3,0)->default(0);
+            $table->decimal('jumlah', 3,0)->default(0);
             $table->timestamps();
         });
     }

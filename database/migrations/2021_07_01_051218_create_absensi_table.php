@@ -16,10 +16,10 @@ class CreateAbsensiTable extends Migration
         Schema::create('absensi', function (Blueprint $table) {
             $table->id();
             $table->string('nis', 10);
-            $table->integer('semester')->default('1');
-            $table->string('sakit');
-            $table->string('izin');
-            $table->string('alfa');
+            $table->decimal('semester',3,0)->default('1');
+            $table->string('sakit',3);
+            $table->string('izin',3);
+            $table->string('alfa',3);
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');
             $table->timestamps();
         });

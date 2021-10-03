@@ -11,7 +11,7 @@
         <p>NISN : {{$identitas->nis}}</p>
         <p>Semester : {{$semesterPilihan}}</p>
         <p>Kelas : {{$identitas->nama_kelas}}</p>
-        <p>Tahun Ajaran : {{$nilais[0]->tahun_ajaran ? $nilais[0]->tahun_ajaran : '2021' }}</p>
+        <p>Tahun Ajaran : {{count($nilais) != 0 ? $nilais[0]->tahun_ajaran : '' }}</p>
       </div>
 
       <div>

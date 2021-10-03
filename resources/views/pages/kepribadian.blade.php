@@ -16,7 +16,6 @@
         @forelse($datas as $nilai)
             <p><b>Semester {{$nilai->semester}} / Tahun {{$nilai->tahun_ajaran}}</b></p>
             <div class="">
-                {{-- <div class=""> --}}
                   <form class="d-flex" method="post" action="{{ url("/edit-kepribadian/$nilai->id") }}">
                     @csrf
                     {{-- <input type="hidden" name="semester" value="{{ $nilai->semester }}"> --}}
@@ -36,8 +35,15 @@
                     <button class="btn btn-warning ml-3" type="submit">
                       Simpan Perubahan
                     </button>
+                    
                   </form>
-                {{-- </div> --}}
+                  <form method="post" action="{{ url("/hapus-kepribadian/$nilai->id") }}">
+                    @csrf
+                    <input type="hidden" name="nis" value="{{ $nis }}">  
+                    <button class="btn btn-danger ml-3" type="submit">
+                          Hapus Data
+                      </button>
+                  </form>
             </div>
         @empty
             <p class="h5 mt-4">Belum Ada Nilai</p>

@@ -111,6 +111,18 @@ class GuruController extends Controller
                 'gelar' => $request->gelar,  
                 'sertifikasi' => $request->sertifikasi
             ];
+            if($request->password){
+                $dataGuru = [
+                    'gender' => $request->gender,
+                    'alamat' => $request->alamat,  
+                    'tgl_lahir' => $request->tgl_lahir,  
+                    'nomor' => $request->nomor,  
+                    'email' => $request->email,  
+                    'gelar' => $request->gelar,  
+                    'sertifikasi' => $request->sertifikasi,
+                    'password' => Hash::make($request->password)
+                ];
+            }
             Guru::where('kode_guru',$id)->update($dataGuru);
             return redirect()->to('/profile');
         }

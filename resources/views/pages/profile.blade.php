@@ -20,9 +20,9 @@
               <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="" value="{{$guru->nama}}">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword11">Gender</label>
-              <p><input type="radio" name="gender" id="exampleInputPassword11" value="Laki-Laki" required placeholder="">   Laki-Laki 
-              <br><input type="radio" name="gender"  id="exampleInputPassword11" value="Perempuan"  required placeholder="">   Perempuan</p>
+              <label for="exampleInputPassword7">Gender</label>
+              <p><input {{ ($guru->gender == "Laki-Laki") ? "checked" : "" }} type="radio" name="gender" id="exampleInputPassword7" value="Laki-Laki" required placeholder="">   Laki-Laki 
+              <br><input {{ $guru->gender == 'Perempuan' ? 'checked' : '' }} type="radio" name="gender"  id="exampleInputPassword7" value="Perempuan"  required placeholder="">   Perempuan</p>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword3">Alamat</label>
@@ -48,6 +48,10 @@
               <label for="exampleInputPassword10">Sertifikasi</label>
               <input type="text" name="sertifikasi" class="form-control" id="exampleInputPassword10"  placeholder="" value="{{$guru->sertifikasi}}">
             </div>
+            <div class="form-group">
+              <label for="exampleInputPassword6">Ubah Password</label>
+              <input type="text" name="password" class="form-control" id="exampleInputPassword6" placeholder="" value="">
+            </div>
               <button class="btn btn-success" type="submit" onclick="{{url('/guru')}}">Simpan</button>
           </form>
         </div>
@@ -68,8 +72,8 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword7">Gender</label>
-              <p><input type="radio" name="gender" id="exampleInputPassword7" value="Laki-Laki" required placeholder="">   Laki-Laki 
-              <br><input type="radio" name="gender"  id="exampleInputPassword7" value="Perempuan"  required placeholder="">   Perempuan</p>
+              <p><input {{ ($siswa->gender == "Laki-Laki") ? "checked" : "" }} type="radio" name="gender" id="exampleInputPassword7" value="Laki-Laki" required placeholder="">   Laki-Laki 
+              <br><input {{ $siswa->gender == 'Perempuan' ? 'checked' : '' }} type="radio" name="gender"  id="exampleInputPassword7" value="Perempuan"  required placeholder="">   Perempuan</p>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword8">Nama Ibu</label>
@@ -90,6 +94,10 @@
             <div class="form-group">
               <label for="exampleInputPassword6">Email</label>
               <input type="text" name="email" class="form-control" id="exampleInputPassword6" placeholder="" value="{{$siswa->email}}">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword6">Ubah Password</label>
+              <input type="text" name="password" class="form-control" id="exampleInputPassword6" placeholder="" value="">
             </div>
             <button class="btn btn-success" type="submit" onclick="{{url('/siswa')}}">Simpan</button>
           </form>

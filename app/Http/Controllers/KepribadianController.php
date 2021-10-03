@@ -47,6 +47,13 @@ class KepribadianController extends Controller
         if($hasil == 0 || $hasil >= 9){
             $hasil = 1;
         }
+        $kepribadian = Kepribadian::where('nis', $request->nis)->first();
+        if($kepribadian){
+            if($kepribadian->semester == $hasil){
+                return redirect()->to('/form-kepribadian/'.$request->nis)->with('error','Nilai Kepribadian Pada Semester Ini Sudah Ada');; 
+            }
+        }
+        
 
         $dataKepribadian = new Kepribadian;
         $dataKepribadian->semester = $hasil;       
@@ -57,7 +64,7 @@ class KepribadianController extends Controller
         $dataKepribadian->nilai_kelakuan = $request->nilai_kelakuan; 
 
         $dataKepribadian->save();
-        return redirect()->to('/form-kepribadian/'.$request->nis);
+        return redirect()->to('/form-kepribadian/'.$request->nis)->with('message','Data added Successfully');;
 
     }
 
@@ -92,7 +99,7 @@ class KepribadianController extends Controller
 
             $dataKepribadian->save();
         }
-        return redirect()->to('/nilai');
+        return redirect()->to('/nilai')->with('message','Data Berhasil ditambahkan');
     }
     
     public function form_catatan($nis)
@@ -143,7 +150,16 @@ class KepribadianController extends Controller
             ];
             Kepribadian::where('id',$id)->update($data);
         }
-        return redirect()->to('/form-kepribadian/'.$request->nis);
+        return redirect()->to('/form-kepribadian/'.$request->nis)->with('warning','Data berhasil diedit');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $findkepribadian = Kepribadian::find($id);
+        if($findkepribadian){      
+            Kepribadian::where('id',$id)->delete();
+        }
+        return redirect()->to('/form-kepribadian/'.$request->nis)->with('error','Data Deleted');
     }
 
     /**

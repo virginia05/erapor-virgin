@@ -17,9 +17,9 @@ class CreateTugasTable extends Migration
             $table->id();
             $table->integer('id_mapel')->unsigned();
             $table->string('nis', 10);
-            $table->string('tahun_ajaran');
-            $table->integer('semester')->default('1');
-            $table->integer('nilai');
+            $table->string('tahun_ajaran',10);
+            $table->decimal('semester',3,0)->default('1');
+            $table->decimal('nilai',3,0);
             $table->string('keterangan');
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');
             $table->foreign('id_mapel')->references('id_mapel')->on('mapel')->onDelete('cascade');

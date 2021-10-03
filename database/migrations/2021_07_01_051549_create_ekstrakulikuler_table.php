@@ -16,9 +16,9 @@ class CreateEkstrakulikulerTable extends Migration
         Schema::create('ekstrakulikuler', function (Blueprint $table) {
             $table->id();
             $table->string('nis', 10);
-            $table->string('nama_eks');
-            $table->integer('semester');
-            $table->integer('predikat')->nullable();
+            $table->string('nama_eks',50);
+            $table->decimal('semester',3,0)->default(1);
+            $table->decimal('predikat',3,0)->nullable();
             $table->foreign('nis')->references('nis')->on('siswa')->onDelete('cascade');
             $table->timestamps();
         });

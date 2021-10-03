@@ -16,7 +16,7 @@ class CreateRombelTable extends Migration
         Schema::create('rombel', function (Blueprint $table) {
             $table->integer('kode_rombel')->primary();
             $table->string('nama_rombel', 10);
-            $table->string('jurusan', 15);
+            $table->string('jurusan', 30);
             $table->text('kategori_mapel')->nullable();
             $table->timestamps();
         });

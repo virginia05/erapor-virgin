@@ -87,6 +87,18 @@ class SiswaController extends Controller
                 'nomor' => $request->nomor,  
                 'email' => $request->email,
             ];
+
+            if($request->password){
+                $datasiswa = [ 
+                    'gender' => $request->gender,
+                    'nama_ibu' => $request->nama_ibu,    
+                    'alamat' => $request->alamat,  
+                    'ttl' => $request->ttl,  
+                    'nomor' => $request->nomor,  
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password)
+                ];
+            }
             Siswa::where('nis',$id)->update($datasiswa);
             return redirect()->to('/profile');
         }

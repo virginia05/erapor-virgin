@@ -54,7 +54,7 @@ class MapelController extends Controller
         }
         // return view(var_dump($mapelsObj->kategori_mapel));
 
-        return redirect()->to('/mapel');
+        return redirect()->to('/mapel')->with('message','Data Berhasil Ditambahkan');
     }
 
     public function hapus_mapel(Request $request,$id)
@@ -81,7 +81,7 @@ class MapelController extends Controller
  
         if($findmapel){
             Mapel::where('id_mapel',$id)->delete();
-            return redirect()->to('/mapel');
+            return redirect()->to('/mapel')->with('error','Data Dihapus');
         }
     }
     
@@ -114,7 +114,7 @@ class MapelController extends Controller
                 'KKM' => $request->KKM,  
             ];
             Mapel::where('id_mapel',$id)->update($datamapel);
-            return redirect()->to('/mapel');
+            return redirect()->to('/mapel')->with('warning','Data Diubah');
         }
     }
 
@@ -134,7 +134,7 @@ class MapelController extends Controller
                 'kategori_mapel' => json_encode($new_kategori,JSON_FORCE_OBJECT),
             ]);
         }
-        return redirect()->to('/mapel');
+        return redirect()->to('/mapel')->with('message','Data Berhasil Ditambahkan');
     }
 
     public function hapus_kategori(Request $request,$nama_mapel,$kode_rombel){
@@ -154,7 +154,7 @@ class MapelController extends Controller
                 'kategori_mapel' => json_encode($convertMapel,JSON_FORCE_OBJECT),
             ]);
         }
-        return redirect()->to('/mapel');
+        return redirect()->to('/mapel')->with('error','Data Dihapus');
     }
 
     

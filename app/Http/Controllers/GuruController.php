@@ -60,7 +60,7 @@ class GuruController extends Controller
         $data->sertifikasi = $request->sertifikasi;  
         $data->password = Hash::make($request->password); 
         $data->save();   
-        return redirect()->to('/guru');
+        return redirect()->to('/guru')->with('message','Data Berhasil Ditambahkan');
 
     }
 
@@ -69,7 +69,7 @@ class GuruController extends Controller
         $findGuru = Guru::where('kode_guru', $id)->first();
         if($findGuru){
             Guru::where('kode_guru',$id)->delete();
-            return redirect()->to('/guru');
+            return redirect()->to('/guru')->with('error','Data Dihapus');
         }
     }
     
@@ -91,7 +91,7 @@ class GuruController extends Controller
                 'sertifikasi' => $request->sertifikasi
             ];
             Guru::where('kode_guru',$id)->update($dataGuru);
-            return redirect()->to('/guru');
+            return redirect()->to('/guru')->with('warning','Data Diubah');
             // return response()->json([
             //     'status'        => array('code' => 200, 'message' => 'Success update new guru.'),
             // ], 200);
@@ -124,7 +124,7 @@ class GuruController extends Controller
                 ];
             }
             Guru::where('kode_guru',$id)->update($dataGuru);
-            return redirect()->to('/profile');
+            return redirect()->to('/profile')->with('warning','Data Diubah');
         }
     }
 

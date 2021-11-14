@@ -88,7 +88,7 @@ class KelasController extends Controller
             $dataNilai->save();
         }
 
-        return redirect()->to('/kelas?id='.$id_kelas);
+        return redirect()->to('/kelas?id='.$id_kelas)->with('message','Data Berhasil Ditambahkan');
 
     }
 

@@ -41,7 +41,7 @@ class SiswaController extends Controller
         $data->email = $request->email;
         $data->password = Hash::make($request->password); 
         $data->save();   
-        return redirect()->to('/siswa');
+        return redirect()->to('/siswa')->with('message','Data Berhasil Ditambahkan');
     }
 
     public function hapus_siswa(Request $request,$id)
@@ -49,7 +49,7 @@ class SiswaController extends Controller
         $findsiswa = Siswa::where('nis', $id)->first();
         if($findsiswa){
             Siswa::where('nis',$id)->delete();
-            return redirect()->to('/siswa');
+            return redirect()->to('/siswa')->with('error','Data Dihapus');
         }
     }
     
@@ -68,7 +68,7 @@ class SiswaController extends Controller
                 'email' => $request->email,
             ];
             Siswa::where('nis',$id)->update($datasiswa);
-            return redirect()->to('/siswa');
+            return redirect()->to('/siswa')->with('warning','Data Diubah');
             // return response()->json([
             //     'status'        => array('code' => 200, 'message' => 'Success update new siswa.'),
             // ], 200);
@@ -100,7 +100,7 @@ class SiswaController extends Controller
                 ];
             }
             Siswa::where('nis',$id)->update($datasiswa);
-            return redirect()->to('/profile');
+            return redirect()->to('/profile')->with('warning','Data Diubah');
         }
     }
 

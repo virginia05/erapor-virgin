@@ -137,7 +137,7 @@ class BebanAjarController extends Controller
         $data->id_kelas = $request->id_kelas;  
         $data->id_mapel = $request->id_mapel;
         $data->save();   
-        return redirect()->to('/beban');
+        return redirect()->to('/beban')->with('message','Data Berhasil Ditambahkan');
     }
 
     public function reset()
@@ -160,7 +160,7 @@ class BebanAjarController extends Controller
         $findbeban = BebanAjar::where('id', $id)->first();
         if($findbeban){
             BebanAjar::where('id',$id)->delete();
-            return redirect()->to('/beban');
+            return redirect()->to('/beban')->with('error','Data Dihapus');
         }
     }
     
@@ -174,7 +174,7 @@ class BebanAjarController extends Controller
                 'id_mapel' => $request->id_mapel,
             ];
             BebanAjar::where('id',$id)->update($databeban);
-            return redirect()->to('/beban');
+            return redirect()->to('/beban')->with('warning','Data Diubah');
         }
     }
 }

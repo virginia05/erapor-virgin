@@ -56,7 +56,7 @@ class AbsensiController extends Controller
         $dataAbsensi->sakit = $request->sakit; 
         $dataAbsensi->izin = $request->izin;
         $dataAbsensi->save();
-        return redirect()->to('/absensi?id_kelas='.$request->id_kelas);
+        return redirect()->to('/absensi?id_kelas='.$request->id_kelas)->with('message','Data Berhasil Ditambahkan');;
     }
 
     /**

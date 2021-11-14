@@ -160,7 +160,7 @@ class NilaiController extends Controller
                 ], 200);
 
             }
-        return response()->json($siswa, 200);
+        return response()->json($siswa, 200)->with('message','Data Berhasil Ditambahkan');
     }
 
     public function postNilaiTugas(Request $request,$nis)
@@ -176,7 +176,7 @@ class NilaiController extends Controller
 
         $this->updatePengetahuan($request->id_mapel,$request->nis);
 
-        return redirect()->to('/nilai/tugas/'.$request->nis.'/'.$request->id_mapel.'/'.$request->semester);
+        return redirect()->to('/nilai/tugas/'.$request->nis.'/'.$request->id_mapel.'/'.$request->semester)->with('message','Data Berhasil Ditambahkan');;
 
     }
 
@@ -216,7 +216,7 @@ class NilaiController extends Controller
             Tugas::where('id',$id_tugas)->update($dataNilaiTugas);
             $this->updatePengetahuan($request->id_mapel,$request->nis);
 
-            return redirect()->to('/nilai/tugas/'.$request->nis.'/'.$request->id_mapel.'/'.$datanilai->semester);
+            return redirect()->to('/nilai/tugas/'.$request->nis.'/'.$request->id_mapel.'/'.$datanilai->semester)->with('warning','Data Diubah');
         }  
     }
 
@@ -226,7 +226,7 @@ class NilaiController extends Controller
         if($datanilai){
             Tugas::where('id',$id_tugas)->delete();
             $this->updatePengetahuan($datanilai->id_mapel,$datanilai->nis);
-            return redirect()->to('/nilai/tugas/'.$datanilai->nis.'/'.$datanilai->id_mapel.'/'.$datanilai->semester);
+            return redirect()->to('/nilai/tugas/'.$datanilai->nis.'/'.$datanilai->id_mapel.'/'.$datanilai->semester)->with('error','Data Dihapus');
         }
         
     }

@@ -113,7 +113,7 @@ class SiswaController extends Controller
     public function cetak_siswa()
     {
         $all_siswa = Siswa::all();
-        $pdf = PDF::loadview('cetak.siswa',compact('all_siswa'));
+        $pdf = PDF::loadview('cetak.siswa',compact('all_siswa'))->setPaper('a4', 'landscape');
         return $pdf->download('laporan-siswa-pdf.pdf');
     }
 

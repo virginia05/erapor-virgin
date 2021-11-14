@@ -84,7 +84,6 @@
 <!-- KHUSUS WALI KELAS KELOLA NILAI EKSTRA-->
 @if ($isWalikelas)
           <hr>
-          {{-- {{$kelasDiwalikan}} --}}
           <table class="table">
             <thead class="thead-dark">
               <tr class="text-center">

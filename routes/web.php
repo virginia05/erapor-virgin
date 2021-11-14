@@ -104,6 +104,7 @@ Route::middleware('auth:guru')->group(function(){
 
 
 	Route::get('/cetak-ledger', [NilaiController::class, 'cetak_ledger']);
+	Route::get('/see-ledger', [NilaiController::class, 'see_ledger']);
 
 
 	Route::get('/reset-tahun-ajaran', [BebanAjarController::class, 'reset']);

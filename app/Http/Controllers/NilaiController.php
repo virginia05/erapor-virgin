@@ -29,98 +29,64 @@ class NilaiController extends Controller
         $kelasAjar = $r->id_kelas;
         $mapelAjar = $r->id_mapel;
         $id = Auth::id();
-
-         if($mapelAjar){
-            $datas = BebanAjar::select(
-                    'siswa.nama',
-                    'siswa.nis',
-                    'siswa.id_kelas',
-                    'nilai.id_nilai',
-                    'nilai.UTS',
-                    'nilai.UAS',
-                    'nilai.keterampilan',
-                    'nilai.sikap',
-                    'nilai.semester',
-                    'mapel.nama_mapel',
-                    'beban_ajar.id_mapel',
-                    'kelas.nama_kelas',
-            )->join('mapel', 'beban_ajar.id_mapel', '=', 'mapel.id_mapel')
-             ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
-             ->join('siswa', 'siswa.id_kelas', '=', 'beban_ajar.id_kelas')
-             ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
-             ->join('nilai', 'siswa.nis', '=', 'nilai.nis')
-             ->where('guru.kode_guru', $id)
-             ->where('beban_ajar.id_mapel', $mapelAjar)
-             ->paginate(7)->withQueryString();
-         }else if($kelasAjar){
-            $datas = BebanAjar::select(
-                    'siswa.nama',
-                    'siswa.nis',
-                    'siswa.id_kelas',
-                    'nilai.id_nilai',
-                    'nilai.UTS',
-                    'nilai.UAS',
-                    'nilai.keterampilan',
-                    'nilai.sikap',
-                    'nilai.semester',
-                    'mapel.nama_mapel',
-                    'beban_ajar.id_mapel',
-                    'kelas.nama_kelas',
-            )->join('mapel', 'beban_ajar.id_mapel', '=', 'mapel.id_mapel')
-             ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
-             ->join('siswa', 'siswa.id_kelas', '=', 'beban_ajar.id_kelas')
-             ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
-             ->join('nilai', 'siswa.nis', '=', 'nilai.nis')
-             ->where('guru.kode_guru', $id)
-             ->where('beban_ajar.id_kelas', $kelasAjar)
-             ->paginate(7)->withQueryString();
-         }else{
-            $datas = BebanAjar::select(
-                    'siswa.nama',
-                    'siswa.nis',
-                    'siswa.id_kelas',
-                    'nilai.id_nilai',
-                    'nilai.UTS',
-                    'nilai.UAS',
-                    'nilai.keterampilan',
-                    'nilai.sikap',
-                    'nilai.semester',
-                    'mapel.nama_mapel',
-                    'beban_ajar.id_mapel',
-                    'kelas.nama_kelas',
-            )->join('mapel', 'beban_ajar.id_mapel', '=', 'mapel.id_mapel')
-             ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
-             ->join('siswa', 'siswa.id_kelas', '=', 'beban_ajar.id_kelas')
-             ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
-             ->join('nilai', 'siswa.nis', '=', 'nilai.nis')
-             ->where('guru.kode_guru', $id)
-             ->orWhere('beban_ajar.id_mapel', $mapelAjar)
-             ->orWhere('beban_ajar.id_kelas', $kelasAjar)
-             ->paginate(7)->withQueryString();
-         }
-
         $mapelYangDiajar = BebanAjar::select(
-                'beban_ajar.id_mapel',
-                'mapel.nama_mapel',
+            'beban_ajar.id_mapel',
+            'mapel.nama_mapel',
         )->join('mapel', 'beban_ajar.id_mapel', '=', 'mapel.id_mapel')
-         ->where('beban_ajar.kode_guru', $id)
-         ->groupBy('mapel.nama_mapel')->get();
+        ->where('beban_ajar.kode_guru', $id)
+        ->groupBy('mapel.nama_mapel')->get();
 
-         $kelasYangDiajar = BebanAjar::select(
+        $kelasYangDiajar = BebanAjar::select(
                 'beban_ajar.id_kelas',
                 'kelas.nama_kelas',
         )->join('kelas', 'beban_ajar.id_kelas', '=', 'kelas.id_kelas')
-         ->where('beban_ajar.kode_guru', $id)
-         ->groupBy('kelas.nama_kelas')->get();
+        ->where('beban_ajar.kode_guru', $id)
+        ->groupBy('kelas.nama_kelas')->get();
+
+        $datas = BebanAjar::select(
+            'siswa.nama',
+            'siswa.nis',
+            'siswa.id_kelas',
+            'nilai.id_nilai',
+            'nilai.UTS',
+            'nilai.UAS',
+            'nilai.keterampilan',
+            'nilai.sikap',
+            'nilai.semester',
+            'mapel.nama_mapel',
+            'beban_ajar.id_mapel',
+            'kelas.nama_kelas',
+    )->join('mapel', 'beban_ajar.id_mapel', '=', 'mapel.id_mapel')
+    ->join('nilai', 'beban_ajar.id_mapel', '=', 'nilai.id_mapel')
+     ->join('siswa', 'siswa.nis', '=', 'nilai.nis')
+     ->join('kelas', 'kelas.id_kelas', '=', 'siswa.id_kelas')
+     ->groupBy('nilai.id_nilai')->where('beban_ajar.kode_guru', $id);
+
+         if($mapelAjar){
+            $datas = $datas->where('mapel.id_mapel', $mapelAjar);
+         }else if($kelasAjar){
+            $datas = $datas->where('kelas.id_kelas', $kelasAjar);
+         }else{
+            $datas = $datas->where('kelas.id_kelas', $kelasYangDiajar[0]->id_kelas)->orWhere('mapel.id_mapel', $mapelAjar);
+         }
+
+         $datas = $datas->paginate(7)->withQueryString();
 
 
         $isWalikelas = false;
         $kelasDiwalikan = 1;
-        $user = Guru::join('kelas', 'guru.kode_guru', '=', 'kelas.kode_guru')->where('kelas.kode_guru',$id)->first();
+        $user = Kelas::where('kode_guru',$id)->get();
         if ($user != null) {
             // user found
             $isWalikelas = true;
-            $kelasDiwalikan = Siswa::where('id_kelas',$user->id_kelas)->get();
+            $kelasDiwalikan = Siswa::where('id_kelas',$user[0]->id_kelas)->get();
+            // var_dump($user->id_kelas);
+            
+            if($user[0]->id_kelas == 1){
+                $kelasDiwalikan = Siswa::where('id_kelas',$user[1]->id_kelas)->get();
+            }
+            // var_dump($kelasDiwalikan);
+            // die();
         }
 
         return view('pages.kelolaNilai',compact('datas','mapelYangDiajar','kelasYangDiajar','kelasAjar','mapelAjar','kelasDiwalikan','isWalikelas'));
@@ -137,7 +103,9 @@ class NilaiController extends Controller
                 'tugas.nilai',
                 'tugas.id',
         )->join('tugas', 'tugas.nis', '=', 'siswa.nis')
-         ->where('siswa.nis', $nis)->get();
+         ->where('siswa.nis', $nis)
+         ->where('tugas.id_mapel', $mapel)
+         ->get();
 
         return view('pages.tugas',compact('datas','nis','mapel','siswa','semester'));
     }
@@ -307,9 +275,49 @@ class NilaiController extends Controller
         $findRombel = Rombel::find($kode_rombel);
         $nama_rombel = $findRombel->nama_rombel . " " . $findRombel->jurusan;
 
-        $pdf = PDF::loadview('cetak.ledger',compact('nama_rombel','mapels','rombels','datas','kode_rombel','tahun_ajaran'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadview('cetak.ledger',compact('nama_rombel','mapels','rombels','datas','kode_rombel','tahun_ajaran'));
+        // $pdf->setPaper('a4', 'landscape');
+        $pdf->setPaper([0, 0, 396.85 ,685.98 ], 'landscape');
         return $pdf->download('ledger-pdf.pdf');
     }
+
+    public function see_ledger(Request $request)
+    {
+        $kode_rombel = 1;
+        $tahun_ajaran= '2021/2022';
+        $datas = Nilai::select(
+            'siswa.nis',
+            'siswa.nama',
+            DB::raw('group_concat(mapel.nama_mapel) as nama_mapel'),
+            DB::raw('group_concat(nilai.pengetahuan) as P'),
+            DB::raw('group_concat(nilai.keterampilan) as K'),
+            DB::raw('group_concat(nilai.sikap) as S')
+        )->join('mapel', 'nilai.id_mapel', '=', 'mapel.id_mapel')
+        ->join('siswa', 'nilai.nis', '=', 'siswa.nis')
+        ->join('kelas', 'siswa.id_kelas', '=', 'kelas.id_kelas')
+        ->join('rombel', 'kelas.kode_rombel', '=', 'rombel.kode_rombel')
+        ->groupBy('siswa.nis')
+        ->where('nilai.tahun_ajaran',$tahun_ajaran)
+        ->where('rombel.kode_rombel',$kode_rombel)
+        ->get();
+
+        $rombels = Rombel::all();
+        $mapelsObj = Rombel::select('kategori_mapel')->where('kode_rombel',$kode_rombel)->first();
+        // $mapels = json_decode($mapelsObj['kategori_mapel']);
+        $mapels = json_decode($mapelsObj->kategori_mapel,true);
+
+        if($mapels==null){
+            $mapels = [];
+        }
+
+        $findRombel = Rombel::find($kode_rombel);
+        $nama_rombel = $findRombel->nama_rombel . " " . $findRombel->jurusan;
+
+        return view('cetak.ledger',compact('nama_rombel','mapels','rombels','datas','kode_rombel','tahun_ajaran'));
+  
+    }
+
+    
 
     public function lihat_nilai_siswa(Request $r){
          $nis = Auth::guard('siswa')->id();

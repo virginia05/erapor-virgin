@@ -18,11 +18,10 @@
           <p>Nama Rombel : <b>{{$nama_rombel}}</b></p>
           <p>Tahun Ajaran : <b>{{$tahun_ajaran}}</b></p>
     </div>
-          <table width="100%" class="table" style="table-layout:fixed;">
-            <thead class="thead-dark">
-              <tr class="text-center">
-                <th scope="col" class="align-middle" rowspan="2">Nama Siswa</th>
-                <th scope="col" class="align-middle" rowspan="2">NIS</th>
+          <table class="table" style="table-layout:fixed;">
+              <tr   class="text-center">
+                <th style="width:5%;word-break: break-word;" scope="col" class="align-middle" rowspan="2">Nama Siswa</th>
+                <th style="width:3%;word-break: break-word;" scope="col" class="align-middle" rowspan="2">NIS</th>
                 @foreach ($mapels as $datamapel)
                   <th scope="col" colspan="3">{{$datamapel}}</th>
                 @endforeach
@@ -33,13 +32,11 @@
                   <th scope="col">K</th>
                   <th scope="col">S</th>
                 @endforeach
-              </tr>
-            </thead>
-            <tbody>
+              </tr>    
               @foreach ($datas as $element)
-                <tr class="text-center">
-                  <th scope="row">{{ $element->nama }}</th>
-                  <td>{{ $element->nis }}</td>
+                <tr  class="text-center">
+                  <th style="width:5%;word-break: break-word;" scope="row">{{ $element->nama }}</th>
+                  <td style="width:5%;word-break: break-word;">{{ $element->nis }}</td>
                     <?php $nama_mapel = explode(",",$element->nama_mapel) ?>
                     <?php $nilaiP = explode(",",$element->P) ?>
                     <?php $nilaiK = explode(",",$element->K) ?>
@@ -58,7 +55,6 @@
                     @endfor
                 </tr>
               @endforeach
-            </tbody>
           </table> <br>
     <h6 style="text-align: right;">Kepala Sekolah</h6>
 </body>

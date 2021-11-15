@@ -115,7 +115,15 @@
             @foreach ($ekskul as $key => $elementEkskul)
               <tr>
                 <td>{{$key+1}} .{{$elementEkskul->nama_eks}}</td>
-                <td class="text-center">{{$elementEkskul->predikat}}</td>
+                @if ($elementEkskul->predikat > 92 )
+                  <td class="text-center">A</td>
+                @elseif ($elementEkskul->predikat > 83 )
+                  <td class="text-center">B</td>
+                @elseif ($elementEkskul->predikat > 74 )
+                  <td class="text-center">C</td>
+                @elseif ($elementEkskul->predikat >= 0 )
+                  <td class="text-center">D</td>
+                @endif
               </tr>
             @endforeach
             <tr class="text-center align-middle">
@@ -123,30 +131,66 @@
             </tr>
             <tr>
               <td>1. Kelakuan</td>
-              <td class="text-center">{{$kepribadian->nilai_kelakuan ? $kepribadian->nilai_kelakuan : 'E'}}</td>
+              @if ($kepribadian->nilai_kelakuan)
+                @if ($kepribadian->nilai_kelakuan > 92 )
+                  <td class="text-center">A</td>
+                @elseif ($kepribadian->nilai_kelakuan > 83 )
+                  <td class="text-center">B</td>
+                @elseif ($kepribadian->nilai_kelakuan > 74 )
+                  <td class="text-center">C</td>
+                @elseif ($kepribadian->nilai_kelakuan >= 0 )
+                  <td class="text-center">D</td>
+                @endif
+              @else
+                <td class="text-center">E</td>
+              @endif
             </tr>
             <tr>
               <td>2. Kerajinan</td>
-              <td class="text-center">{{$kepribadian->nilai_kerajinan ? $kepribadian->nilai_kerajinan : 'E'}}</td>
+              @if ($kepribadian->nilai_kerajinan)
+                @if ($kepribadian->nilai_kerajinan > 92 )
+                  <td class="text-center">A</td>
+                @elseif ($kepribadian->nilai_kerajinan > 83 )
+                  <td class="text-center">B</td>
+                @elseif ($kepribadian->nilai_kerajinan > 74 )
+                  <td class="text-center">C</td>
+                @elseif ($kepribadian->nilai_kerajinan >= 0 )
+                  <td class="text-center">D</td>
+                @endif
+              @else
+                <td class="text-center">E</td>
+              @endif
             </tr>
             <tr>
               <td>3. Kerapihan </td>
-              <td class="text-center">{{$kepribadian->nilai_kerapihan ? $kepribadian->nilai_kerapihan : 'E'}}</td>
+              @if ($kepribadian->nilai_kerapihan)
+                @if ($kepribadian->nilai_kerapihan > 92 )
+                  <td class="text-center">A</td>
+                @elseif ($kepribadian->nilai_kerapihan > 83 )
+                  <td class="text-center">B</td>
+                @elseif ($kepribadian->nilai_kerapihan > 74 )
+                  <td class="text-center">C</td>
+                @elseif ($kepribadian->nilai_kerapihan >= 0 )
+                  <td class="text-center">D</td>
+                @endif
+              @else
+                <td class="text-center">E</td>
+              @endif
             </tr>
             <tr class="text-center align-middle">
               <td class="text-center align-middle" rowspan="4">Ketidakhadiran</td>
             </tr>
             <tr>
               <td>1. Sakit</td>
-              <td class="text-center">{{$absensi->sakit ? $absensi->sakit : 'E'}}</td>
+              <td class="text-center">{{$absensi->sakit ? $absensi->sakit : '0'}}</td>
             </tr>
             <tr>
               <td>2. Izin</td>
-              <td class="text-center">{{$absensi->izin ? $absensi->izin : 'E'}}</td>
+              <td class="text-center">{{$absensi->izin ? $absensi->izin : '0'}}</td>
             </tr>
             <tr>
               <td>3. Tanpa Keterangan  </td>
-              <td class="text-center">{{$absensi->alfa ? $absensi->alfa : 'E'}}</td>
+              <td class="text-center">{{$absensi->alfa ? $absensi->alfa : '0'}}</td>
             </tr>
           </tbody>
         </table>

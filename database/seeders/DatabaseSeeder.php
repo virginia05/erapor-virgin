@@ -451,23 +451,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
 
-         DB::table('guru')->insert([
-            'kode_guru' => '3',
-            'nuptk' => '135775465620040',
-            'nama' => 'Nana Maulana',
-            'gender' => 'Laki-Laki',
-            'nomor' => 0,
-            'email' => 'user@mailnesia.com',
-            'tgl_lahir' => '1976-10-23',
-            'alamat' => 'jati Waru RT 05/05',
-            'status_pegawai' => 'GTY/PTY',
-            'jenis_ptk' => 'Kepala Sekolah',
-            'gelar' => 'S1',
-            'sertifikasi' => 'Matematika',
-            'password' => Hash::make('123'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+         
 
            DB::table('kelas')->insert([
             'kode_rombel' => '1',
@@ -572,6 +556,23 @@ class DatabaseSeeder extends Seeder
             'kode_guru' => '1',
             'id_kelas' => 2,
             'id_mapel' => 2,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        DB::table('guru')->insert([
+            'kode_guru' => '3',
+            'nuptk' => '135775465620040',
+            'nama' => 'Nana Maulana',
+            'gender' => 'Laki-Laki',
+            'nomor' => 0,
+            'email' => 'user@mailnesia.com',
+            'tgl_lahir' => '1976-10-23',
+            'alamat' => 'jati Waru RT 05/05',
+            'status_pegawai' => 'GTY/PTY',
+            'jenis_ptk' => 'Kepala Sekolah',
+            'gelar' => 'S1',
+            'sertifikasi' => 'Matematika',
+            'password' => Hash::make('123'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

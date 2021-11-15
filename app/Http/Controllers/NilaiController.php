@@ -67,7 +67,9 @@ class NilaiController extends Controller
          }else if($kelasAjar){
             $datas = $datas->where('kelas.id_kelas', $kelasAjar);
          }else{
-            $datas = $datas->where('kelas.id_kelas', $kelasYangDiajar[0]->id_kelas)->orWhere('mapel.id_mapel', $mapelAjar);
+             if(!$kelasYangDiajar){
+                 $datas = $datas->where('kelas.id_kelas', $kelasYangDiajar[0]->id_kelas)->orWhere('mapel.id_mapel', $mapelAjar);
+             }
          }
 
          $datas = $datas->paginate(7)->withQueryString();
@@ -140,6 +142,7 @@ class NilaiController extends Controller
         $dataTugas->nilai = $request->nilai; 
         $dataTugas->nis = $request->nis; 
         $dataTugas->semester = $request->semester;
+        $dataTugas->tahun_ajaran = date('Y')."/".date('Y',strtotime('+1 year'));
         $dataTugas->save();
 
         $this->updatePengetahuan($request->id_mapel,$request->nis);
@@ -164,6 +167,8 @@ class NilaiController extends Controller
         
         $hasilPengetahuan = ($nilai->UTS + $nilai->UAS + $avg_tugas)/3;
         // return view(var_dump($hasilPengetahuan));
+        // var_dump($nilai);
+        // die();
 
         Nilai::where('id_mapel', $id_mapel)
             ->where('nis',$nis)

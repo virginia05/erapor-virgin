@@ -78,7 +78,10 @@ class NilaiController extends Controller
         $isWalikelas = false;
         $kelasDiwalikan = 1;
         $user = Kelas::where('kode_guru',$id)->get();
-        if ($user != null) {
+         
+
+        if (!$user->isEmpty()) {
+            
             // user found
             $isWalikelas = true;
             $kelasDiwalikan = Siswa::where('id_kelas',$user[0]->id_kelas)->get();
@@ -90,6 +93,7 @@ class NilaiController extends Controller
             // var_dump($kelasDiwalikan);
             // die();
         }
+       
 
         return view('pages.kelolaNilai',compact('datas','mapelYangDiajar','kelasYangDiajar','kelasAjar','mapelAjar','kelasDiwalikan','isWalikelas'));
     }

@@ -117,9 +117,7 @@ class KelasController extends Controller
         $dataKelas->kode_guru = $request->kode_guru;  
         $dataKelas->nama_kelas = $request->nama_kelas; 
         $dataKelas->save();
-        
-        return response()->json(['status' => array('code' => 200, 'message' => 'Success store new kelas.'),
-        ], 200);
+        return redirect()->to('/kelas')->with('message','Data Berhasil Ditambahkan');
     }
 
     public function ganti_walikelas(Request $request)
@@ -130,11 +128,10 @@ class KelasController extends Controller
                     'kode_guru' => $request->kode_guru,
                 ];
                 Kelas::where('id_kelas',$request->id_kelas)->update($data);
-                return response()->json([
-                    'status'        => array('code' => 200, 'message' => 'Success update new kelas.'),
-                ], 200);
+                return redirect()->to('/kelas')->with('message','Data Berhasil Ditambahkan');
             }
-        return response()->json($siswa, 200);
+        return redirect()->to('/kelas')->with('error','Data Tidak Berhasil Ditambahkan');
+        
     }
 
     

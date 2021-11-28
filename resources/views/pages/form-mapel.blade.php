@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword3">KKM</label>
-              <input type="text" name="KKM" class="form-control" id="exampleInputPassword3" placeholder="" value="{{$mapel->KKM}}">
+              <input type="number"  name="KKM" class="form-control" id="exampleInputPassword3"placeholder="0" min="0" max="100" value="{{$mapel->KKM}}">            
             </div>
             
             <button class="btn btn-success" type="submit" onclick="{{url('/mapel')}}">Ubah Data</button>

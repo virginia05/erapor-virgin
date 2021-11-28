@@ -9,34 +9,30 @@
     <h3 style="text-align: center;">Daftar Peserta Didik</h3>
     <h3 style="text-align: center;">SMK Yapan Indonesia</h3><hr>
           <table class="table">
-            <thead class="thead-dark">
               <tr class="text-center" >
-                <th class="align-middle" scope="col">NIS</th>
+                <th class="align-middle"style="width:10%;word-break: break-word;" scope="col">NIS</th>
                 <th class="align-middle" scope="col">Nama</th>
                 <th class="align-middle" scope="col">Gender</th>
                 <th class="align-middle" scope="col">Nama Ibu</th>
                 <th class="align-middle" scope="col">Id Kelas</th>
                 <th class="align-middle" scope="col">Alamat</th>
                 <th class="align-middle" scope="col">Tanggal Lahir</th>
-                <th class="align-middle" scope="col">nomor</th>
-                <th class="align-middle" scope="col">Email</th>
+                <th class="align-middle"style="width:8%;word-break: break-word;" scope="col">nomor</th>
+                <th class="align-middle"style="width:15%;word-break: break-word;" scope="col">Email</th>
               </tr>
-            </thead>
-            <tbody>
               @foreach ($all_siswa as $data)
               <tr class="text-center" >
-                <th class="align-middle">{{ $data->nis }}</th>
+                <th class="align-middle"style="width:10%;word-break: break-word;">{{ $data->nis }}</th>
                 <td class="align-middle">{{ $data->nama }}</td>
                 <td class="align-middle">{{ $data->gender }}</td>
                 <td class="align-middle">{{ $data->nama_ibu }}</td>
                 <td class="align-middle">{{ $data->id_kelas }}</td>
                 <td class="align-middle">{{ $data->alamat }}</td>
                 <td class="align-middle">{{ $data->ttl }}</td>
-                <td class="align-middle">{{ $data->nomor }}</td>
-                <td class="align-middle">{{ $data->email }}</td>
+                <td class="align-middle"style="width:8%;word-break: break-word;">{{ $data->nomor }}</td>
+                <td class="align-middle"style="width:15%;word-break: break-word;">{{ $data->email }}</td>
               </tr>
               @endforeach
-            </tbody>
           </table>
 
 </body>

@@ -61,15 +61,14 @@ class NilaiController extends Controller
      ->join('siswa', 'siswa.nis', '=', 'nilai.nis')
      ->join('kelas', 'kelas.id_kelas', '=', 'siswa.id_kelas')
      ->groupBy('nilai.id_nilai')->where('beban_ajar.kode_guru', $id);
-
          if($mapelAjar){
-            $datas = $datas->where('mapel.id_mapel', $mapelAjar);
+            $datas = $datas->where('mapel.id_mapel', $mapelAjar)->where('kelas.id_kelas', $kelasYangDiajar[0]->id_kelas);
          }else if($kelasAjar){
             $datas = $datas->where('kelas.id_kelas', $kelasAjar);
          }else{
-             if(!$kelasYangDiajar){
-                 $datas = $datas->where('kelas.id_kelas', $kelasYangDiajar[0]->id_kelas)->orWhere('mapel.id_mapel', $mapelAjar);
-             }
+            if(!$kelasYangDiajar->isEmpty()){
+                $datas = $datas->where('kelas.id_kelas', $kelasYangDiajar[0]->id_kelas)->orWhere('mapel.id_mapel', $mapelAjar);
+            }
          }
 
          $datas = $datas->paginate(7)->withQueryString();

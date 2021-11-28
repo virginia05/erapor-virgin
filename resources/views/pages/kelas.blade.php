@@ -78,7 +78,7 @@
               <th scope="row">{{ $dataKelas->id_kelas }}</th>
               <td>{{ $dataKelas->nama_rombel }} {{$dataKelas->jurusan}}</td>
               <td>
-              <form class="d-flex" method="post" action="{{ url("/ganti-walikelas") }}" target="invisible" >
+              <form class="d-flex" method="post" action="{{ url("/ganti-walikelas") }}"  >
                   @csrf
                 <input type="hidden" name="id_kelas" value="{{ $dataKelas->id_kelas }}">
                 <select name="kode_guru" class="form-select w-100 p-2" value="{{$dataKelas->kode_guru}}" aria-label="Default select example">

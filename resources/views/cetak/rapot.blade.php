@@ -48,37 +48,44 @@
                 <td>{{$nilai->KKM}}</td>
                 <td>{{$nilai->pengetahuan}}</td>
                 
-                  @if ($nilai->pengetahuan > 92 )
+                  @if ($nilai->pengetahuan >= 91 )
                     <td>A</td>
-                  @elseif ($nilai->pengetahuan > 83 )
+                  @elseif ($nilai->pengetahuan >= 75 )
                     <td>B</td>
-                  @elseif ($nilai->pengetahuan > 74 )
+                  @elseif ($nilai->pengetahuan >= 60 )
                     <td>C</td>
-                  @elseif ($nilai->pengetahuan >= 0 )
+                  @elseif ($nilai->pengetahuan >= 55 )
                     <td>D</td>
+                  @else
+                    <td>E</td>
                   @endif
                 
                 <td>{{$nilai->keterampilan}}</td>
                 
-                  @if ($nilai->keterampilan > 92 )
+                  @if ($nilai->keterampilan >= 91 )
                     <td>A</td>
-                  @elseif ($nilai->keterampilan > 83 )
+                  @elseif ($nilai->keterampilan >= 75 )
                     <td>B</td>
-                  @elseif ($nilai->keterampilan > 74 )
+                  @elseif ($nilai->keterampilan >= 60 )
                     <td>C</td>
-                  @elseif ($nilai->keterampilan >= 0 )
+                  @elseif ($nilai->keterampilan >= 55 )
                     <td>D</td>
+                  @else
+                    <td>E</td>
+                  @endif
+
+                  @if ($nilai->sikap >= 91 )
+                    <td>A</td>
+                  @elseif ($nilai->sikap >= 75 )
+                    <td>B</td>
+                  @elseif ($nilai->sikap >= 60 )
+                    <td>C</td>
+                  @elseif ($nilai->sikap >= 55 )
+                    <td>D</td>
+                  @else
+                    <td>E</td>
                   @endif
                 
-                  @if ($nilai->sikap > 92 )
-                    <td>A</td>
-                  @elseif ($nilai->sikap > 83 )
-                    <td>B</td>
-                  @elseif ($nilai->sikap > 74 )
-                    <td>C</td>
-                  @elseif ($nilai->sikap >= 0 )
-                    <td>D</td>
-                  @endif
               </tr>
               <tr>
                 <td>Guru : {{$nilai->nama}}</td>

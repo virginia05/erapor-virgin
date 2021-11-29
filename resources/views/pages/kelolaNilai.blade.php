@@ -13,15 +13,21 @@
         <div class="row my-3">
           <div class="dropdown mx-3">
             <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Kelas & Mata Pelajaran
+                Kelas : {{$kelasPilihan ? $kelasPilihan->nama_kelas : '' }}
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              @foreach ($mapelYangDiajar as $mapel)
-                <li><a class="dropdown-item" href="{{url('/nilai?id_mapel='.$mapel->id_mapel)}}">{{$mapel->nama_mapel}}</a></li>
-              @endforeach
-              <div class="dropdown-divider"></div>
               @foreach ($kelasYangDiajar as $kelas)
-                <li><a class="dropdown-item" href="{{url('/nilai?id_kelas='.$kelas->id_kelas)}}">{{$kelas->nama_kelas}}</a></li>
+                <li><a class="dropdown-item" href="{{url('/nilai?id_mapel='. $mapelAjar. '&id_kelas='.$kelas->id_kelas)}}">{{$kelas->nama_kelas}}</a></li>
+              @endforeach
+            </ul>
+          </div>
+          <div class="dropdown mx-3">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                Mata Pelajaran : {{$mapelPilihan ?$mapelPilihan->nama_mapel : '' }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+              @foreach ($mapelYangDiajar as $mapel)
+                <li><a class="dropdown-item" href="{{url('/nilai?id_mapel='.$mapel->id_mapel . '&id_kelas='.$kelasAjar)}}">{{$mapel->nama_mapel}}</a></li>
               @endforeach
             </ul>
           </div>

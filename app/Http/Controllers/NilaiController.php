@@ -26,8 +26,8 @@ class NilaiController extends Controller
 {
     public function index(Request $r)
     {
-        $kelasAjar = $r->id_kelas;
-        $mapelAjar = $r->id_mapel;
+        $kelasAjar = $r->id_kelas ? $r->id_kelas : 1;
+        $mapelAjar = $r->id_mapel  ? $r->id_mapel : 1;
         $id = Auth::id();
         $mapelYangDiajar = BebanAjar::select(
             'beban_ajar.id_mapel',
@@ -35,6 +35,8 @@ class NilaiController extends Controller
         )->join('mapel', 'beban_ajar.id_mapel', '=', 'mapel.id_mapel')
         ->where('beban_ajar.kode_guru', $id)
         ->groupBy('mapel.nama_mapel')->get();
+        $mapelPilihan = Mapel::find($r->id_mapel);
+        $kelasPilihan = Kelas::find($r->id_kelas);
 
         $kelasYangDiajar = BebanAjar::select(
                 'beban_ajar.id_kelas',
@@ -61,10 +63,19 @@ class NilaiController extends Controller
      ->join('siswa', 'siswa.nis', '=', 'nilai.nis')
      ->join('kelas', 'kelas.id_kelas', '=', 'siswa.id_kelas')
      ->groupBy('nilai.id_nilai')->where('beban_ajar.kode_guru', $id);
-         if($mapelAjar){
-            $datas = $datas->where('mapel.id_mapel', $mapelAjar)->where('kelas.id_kelas', $kelasYangDiajar[0]->id_kelas);
-         }else if($kelasAjar){
-            $datas = $datas->where('kelas.id_kelas', $kelasAjar);
+// query alternativ :
+//      INNER JOIN kelas ON beban_ajar.id_kelas = kelas.id_kelas
+//  INNER JOIN mapel ON mapel.id_mapel = beban_ajar.id_mapel
+//  INNER JOIN siswa ON siswa.id_kelas = kelas.id_kelas
+//  INNER JOIN nilai ON nilai.nis = siswa.nis
+
+         if($mapelAjar || $kelasAjar){
+            $datas = $datas->where([
+                'beban_ajar.id_kelas' => $kelasAjar,
+                'beban_ajar.id_mapel' => $mapelAjar,
+                'kelas.id_kelas' => $kelasAjar,
+                'nilai.id_mapel' => $mapelAjar,
+                ]);
          }else{
             if(!$kelasYangDiajar->isEmpty()){
                 $datas = $datas->where('kelas.id_kelas', $kelasYangDiajar[0]->id_kelas)->orWhere('mapel.id_mapel', $mapelAjar);
@@ -94,7 +105,7 @@ class NilaiController extends Controller
         }
        
 
-        return view('pages.kelolaNilai',compact('datas','mapelYangDiajar','kelasYangDiajar','kelasAjar','mapelAjar','kelasDiwalikan','isWalikelas'));
+        return view('pages.kelolaNilai',compact('datas','mapelPilihan','kelasPilihan','mapelYangDiajar','kelasYangDiajar','kelasAjar','mapelAjar','kelasDiwalikan','isWalikelas'));
     }
 
     public function index_tugas($nis,$mapel,$semester)

@@ -97,7 +97,7 @@ class NilaiController extends Controller
             $kelasDiwalikan = Siswa::where('id_kelas',$user[0]->id_kelas)->get();
             // var_dump($user->id_kelas);
             
-            if($user[0]->id_kelas == 1){
+            if($user[0]->id_kelas == 1 && count($user) > 1){
                 $kelasDiwalikan = Siswa::where('id_kelas',$user[1]->id_kelas)->get();
             }
             // var_dump($kelasDiwalikan);

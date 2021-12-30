@@ -11,7 +11,7 @@
         <!-- FORM EDIT GURU -->
         @if ($param === 'edit') 
         <div class="my-4 mx-2">    
-          <form class="" method="post" action="{{ url("/edit-guru/$guru->kode_guru") }}" >
+          <form class="" method="post" action="{{ url("/edit-guru/$guru->nuptk") }}" >
           <h3>Ubah Data Tenaga Pendidik</h3> <hr>
             @csrf
             <div class="form-group">

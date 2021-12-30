@@ -15,15 +15,15 @@ class CreateSiswaTable extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->string('nis', 10)->primary();
-            $table->string('nama', 50);
+            $table->string('nama', 40);
             $table->string('gender',10)->nullable();
-            $table->string('nama_ibu', 50)->nullable();
+            $table->string('nama_ibu', 40)->nullable();
             $table->integer('id_kelas')->unsigned()->nullable();
-            $table->string('alamat',100)->nullable();
+            $table->string('alamat',50)->nullable();
             $table->string('tahun_mulai',9)->nullable();
             $table->date('ttl')->nullable();
             $table->string('nomor',14)->nullable();
-            $table->string('email', 70)->nullable();
+            $table->string('email', 30)->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');

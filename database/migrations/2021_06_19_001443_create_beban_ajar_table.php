@@ -15,10 +15,10 @@ class CreateBebanAjarTable extends Migration
     {
         Schema::create('beban_ajar', function (Blueprint $table) {
             $table->id();
-            $table->integer('kode_guru');
+            $table->string('nuptk',16);
             $table->integer('id_mapel')->unsigned();
             $table->integer('id_kelas')->unsigned();
-            $table->foreign('kode_guru')->references('kode_guru')->on('guru')->onDelete('cascade');
+            $table->foreign('nuptk')->references('nuptk')->on('guru')->onDelete('cascade');
             $table->foreign('id_mapel')->references('id_mapel')->on('mapel')->onDelete('cascade');
             $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');
             $table->timestamps();

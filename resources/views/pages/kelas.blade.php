@@ -81,12 +81,12 @@
               <form class="d-flex" method="post" action="{{ url("/ganti-walikelas") }}"  >
                   @csrf
                 <input type="hidden" name="id_kelas" value="{{ $dataKelas->id_kelas }}">
-                <select name="kode_guru" class="form-select w-100 p-2" value="{{$dataKelas->kode_guru}}" aria-label="Default select example">
+                <select name="nuptk" class="form-select w-100 p-2" value="{{$dataKelas->nuptk}}" aria-label="Default select example">
                   @foreach ($all_guru as $guru)
-                   @if ($guru->kode_guru == $dataKelas->kode_guru)
-                      <option selected value="{{$guru->kode_guru}}">{{$guru->nama}}</option>
+                   @if ($guru->nuptk == $dataKelas->nuptk)
+                      <option selected value="{{$guru->nuptk}}">{{$guru->nama}}</option>
                     @else
-                      <option value="{{$guru->kode_guru}}">{{$guru->nama}}</option>
+                      <option value="{{$guru->nuptk}}">{{$guru->nama}}</option>
                     @endif
                   @endforeach
                 </select>
@@ -124,9 +124,9 @@
                   </div>
                   <div class="form-group">
                     <label >Pilih Walikelas</label>
-                    <select name="kode_guru" class="form-select w-100 p-2" aria-label="Default select example">
+                    <select name="nuptk" class="form-select w-100 p-2" aria-label="Default select example">
                       @foreach ($all_guru as $guru)
-                        <option value="{{$guru->kode_guru}}">{{$guru->nama}}</option>
+                        <option value="{{$guru->nuptk}}">{{$guru->nama}}</option>
                       @endforeach
                     </select>
                   </div>

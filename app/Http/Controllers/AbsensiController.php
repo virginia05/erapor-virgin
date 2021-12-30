@@ -23,7 +23,7 @@ class AbsensiController extends Controller
                 'kelas.id_kelas',
                 'kelas.nama_kelas',
         )->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
-         ->where('beban_ajar.kode_guru', $id)
+         ->where('beban_ajar.nuptk', $id)
          ->groupBy('kelas.id_kelas')
          ->get();
 

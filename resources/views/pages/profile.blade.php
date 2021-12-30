@@ -9,7 +9,7 @@
           $guru = Auth::user();
         @endphp
         <div class="my-4 mx-2">    
-          <form class="" method="post" action="{{ url("/edit-guru-profile/$guru->kode_guru") }}" >
+          <form class="" method="post" action="{{ url("/edit-guru-profile/$guru->nuptk") }}" >
             @csrf
             <div class="form-group">
               <label for="exampleInputPassword1">NUPTK</label>

@@ -32,7 +32,7 @@
               </tr>
               @foreach ($all_guru as $data)
               <tr class="text-center">
-                <th class="align-middle" style="width:5%;" scope="row">{{ $data->kode_guru }}</th>
+                <th class="align-middle" style="width:5%;" scope="row">{{ $data->nuptk }}</th>
                 <td class="align-middle" style="width:15%;word-break: break-word;">{{ $data->nuptk }}</td>
                 <td class="align-middle">{{ $data->nama }}</td>
                 <td class="align-middle">{{ $data->gender }}</td>

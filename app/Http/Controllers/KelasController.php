@@ -24,12 +24,12 @@ class KelasController extends Controller
                 'kelas.nama_kelas',
                 'kelas.id_kelas',
                 'guru.nama',
-                'guru.kode_guru',
+                'guru.nuptk',
                 'rombel.kode_rombel',
                 'rombel.nama_rombel',
                 'rombel.jurusan',
         )->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
-         ->leftJoin('guru', 'guru.kode_guru', '=', 'kelas.kode_guru')->paginate(10);
+         ->leftJoin('guru', 'guru.nuptk', '=', 'kelas.nuptk')->paginate(10);
 
          $all_rombel = Rombel::all();
          $all_kelas = Kelas::all();
@@ -114,7 +114,7 @@ class KelasController extends Controller
     {
         $dataKelas = new Kelas;
         $dataKelas->kode_rombel = $request->kode_rombel;       
-        $dataKelas->kode_guru = $request->kode_guru;  
+        $dataKelas->nuptk = $request->nuptk;  
         $dataKelas->nama_kelas = $request->nama_kelas; 
         $dataKelas->save();
         return redirect()->to('/kelas')->with('message','Data Berhasil Ditambahkan');
@@ -125,7 +125,7 @@ class KelasController extends Controller
          $findKelas = Kelas::where('id_kelas', $request->id_kelas)->first();
             if($findKelas){
                 $data = [
-                    'kode_guru' => $request->kode_guru,
+                    'nuptk' => $request->nuptk,
                 ];
                 Kelas::where('id_kelas',$request->id_kelas)->update($data);
                 return redirect()->to('/kelas')->with('message','Data Berhasil Ditambahkan');

@@ -24,7 +24,7 @@ class BebanAjarController extends Controller
             ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
             ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
             ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
-            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->join('guru', 'guru.nuptk', '=', 'beban_ajar.nuptk')
             ->paginate(7);
         $all_rombel = Rombel::all();
 
@@ -38,7 +38,7 @@ class BebanAjarController extends Controller
             ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
             ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
             ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
-            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->join('guru', 'guru.nuptk', '=', 'beban_ajar.nuptk')
             ->where('rombel.kode_rombel',$r->kode_rombel)->paginate(7);
         }
 
@@ -58,7 +58,7 @@ class BebanAjarController extends Controller
             ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
             ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
             ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
-            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->join('guru', 'guru.nuptk', '=', 'beban_ajar.nuptk')
             ->paginate(7);
         $all_rombel = Rombel::all();
 
@@ -72,7 +72,7 @@ class BebanAjarController extends Controller
             ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
             ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
             ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
-            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->join('guru', 'guru.nuptk', '=', 'beban_ajar.nuptk')
             ->where('rombel.kode_rombel',$r->kode_rombel)->paginate(7);
         }
 
@@ -92,7 +92,7 @@ class BebanAjarController extends Controller
             ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
             ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
             ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
-            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->join('guru', 'guru.nuptk', '=', 'beban_ajar.nuptk')
             ->paginate(7);
         $all_rombel = Rombel::all();
 
@@ -106,7 +106,7 @@ class BebanAjarController extends Controller
             ->join('kelas', 'kelas.id_kelas', '=', 'beban_ajar.id_kelas')
             ->join('rombel', 'rombel.kode_rombel', '=', 'kelas.kode_rombel')
             ->join('mapel', 'mapel.id_mapel', '=', 'beban_ajar.id_mapel')
-            ->join('guru', 'guru.kode_guru', '=', 'beban_ajar.kode_guru')
+            ->join('guru', 'guru.nuptk', '=', 'beban_ajar.nuptk')
             ->where('rombel.kode_rombel',$r->kode_rombel)->get();
         }
 
@@ -133,7 +133,7 @@ class BebanAjarController extends Controller
     public function tambah_beban(Request $request)
     {
         $data = new BebanAjar;   
-        $data->kode_guru = $request->kode_guru;       
+        $data->nuptk = $request->nuptk;       
         $data->id_kelas = $request->id_kelas;  
         $data->id_mapel = $request->id_mapel;
         $data->save();   
@@ -147,7 +147,7 @@ class BebanAjarController extends Controller
         // tabel kelas id guru set id = 1 
         BebanAjar::truncate();
         $kelas = Kelas::all();
-        Kelas::query()->update(['kode_guru' => 1]);
+        Kelas::query()->update(['nuptk' => 1]);
         Siswa::query()->update(['id_kelas' => 1]);
 
         return redirect()->to('/kelas');
@@ -169,7 +169,7 @@ class BebanAjarController extends Controller
         $findbeban = BebanAjar::where('id', $id)->first();
         if($findbeban){
             $databeban = [
-                'kode_guru' => $request->kode_guru,       
+                'nuptk' => $request->nuptk,       
                 'id_kelas' => $request->id_kelas,  
                 'id_mapel' => $request->id_mapel,
             ];

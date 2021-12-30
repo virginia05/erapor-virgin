@@ -12,7 +12,7 @@ class Guru extends Authenticatable
     use HasFactory;
     protected $table = 'guru';
     protected $guard = 'guru';
-    protected $primaryKey = 'kode_guru';
+    protected $primaryKey = 'nuptk';
     // protected $fillable = ['username', 'password'];
     protected $hidden = [
         'password', 

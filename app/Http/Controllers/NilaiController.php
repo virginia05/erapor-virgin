@@ -33,7 +33,7 @@ class NilaiController extends Controller
             'beban_ajar.id_mapel',
             'mapel.nama_mapel',
         )->join('mapel', 'beban_ajar.id_mapel', '=', 'mapel.id_mapel')
-        ->where('beban_ajar.kode_guru', $id)
+        ->where('beban_ajar.nuptk', $id)
         ->groupBy('mapel.nama_mapel')->get();
         $mapelPilihan = Mapel::find($r->id_mapel);
         $kelasPilihan = Kelas::find($r->id_kelas);
@@ -42,7 +42,7 @@ class NilaiController extends Controller
                 'beban_ajar.id_kelas',
                 'kelas.nama_kelas',
         )->join('kelas', 'beban_ajar.id_kelas', '=', 'kelas.id_kelas')
-        ->where('beban_ajar.kode_guru', $id)
+        ->where('beban_ajar.nuptk', $id)
         ->groupBy('kelas.nama_kelas')->get();
 
         $datas = BebanAjar::select(
@@ -62,7 +62,7 @@ class NilaiController extends Controller
     ->join('nilai', 'beban_ajar.id_mapel', '=', 'nilai.id_mapel')
      ->join('siswa', 'siswa.nis', '=', 'nilai.nis')
      ->join('kelas', 'kelas.id_kelas', '=', 'siswa.id_kelas')
-     ->groupBy('nilai.id_nilai')->where('beban_ajar.kode_guru', $id);
+     ->groupBy('nilai.id_nilai')->where('beban_ajar.nuptk', $id);
 // query alternativ :
 //      INNER JOIN kelas ON beban_ajar.id_kelas = kelas.id_kelas
 //  INNER JOIN mapel ON mapel.id_mapel = beban_ajar.id_mapel
@@ -87,7 +87,7 @@ class NilaiController extends Controller
 
         $isWalikelas = false;
         $kelasDiwalikan = 1;
-        $user = Kelas::where('kode_guru',$id)->get();
+        $user = Kelas::where('nuptk',$id)->get();
          
 
         if (!$user->isEmpty()) {
@@ -355,7 +355,7 @@ class NilaiController extends Controller
             'nilai.sikap'
          )->leftJoin('mapel','mapel.id_mapel','=','nilai.id_mapel')
          ->leftJoin('beban_ajar','mapel.id_mapel','=','beban_ajar.id_mapel')
-         ->leftJoin('guru','guru.kode_guru','=','beban_ajar.kode_guru')
+         ->leftJoin('guru','guru.nuptk','=','beban_ajar.nuptk')
          ->where('nis',$nis)->where('semester',$semesterPilihan)->get();
 
          $ekskul = Ekstrakulikuler::where('nis',$nis)->where('semester',$semesterPilihan)->get();
@@ -401,7 +401,7 @@ class NilaiController extends Controller
             'nilai.sikap'
          )->leftJoin('mapel','mapel.id_mapel','=','nilai.id_mapel')
          ->leftJoin('beban_ajar','mapel.id_mapel','=','beban_ajar.id_mapel')
-         ->leftJoin('guru','guru.kode_guru','=','beban_ajar.kode_guru')
+         ->leftJoin('guru','guru.nuptk','=','beban_ajar.nuptk')
          ->where('nis',$nis)->where('semester',$semesterPilihan)->get();
 
          $ekskul = Ekstrakulikuler::where('nis',$nis)->where('semester',$semesterPilihan)->get();

@@ -26,7 +26,7 @@
             <tbody>
               @foreach ($all_guru as $data)
               <tr class="text-center" style="white-space: nowrap;">
-                <th class="align-middle" scope="row">{{ $data->kode_guru }}</th>
+                <th class="align-middle" scope="row">{{ $data->nuptk }}</th>
                 <td class="align-middle">{{ $data->nuptk }}</td>
                 <td class="align-middle">{{ $data->nama }}</td>
                 <td class="align-middle">{{ $data->gender }}</td>

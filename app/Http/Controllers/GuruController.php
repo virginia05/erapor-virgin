@@ -39,14 +39,7 @@ class GuruController extends Controller
 
     public function tambah_guru(Request $request)
     {
-        $latest = Guru::latest()->first();
-        if($latest){
-            $kode_guru = $latest->kode_guru + 1;
-        }else{
-            $kode_guru = "1";
-        }
         $data = new Guru;
-        $data->kode_guru = $kode_guru;       
         $data->nuptk = $request->nuptk;       
         $data->nama = $request->nama;
         $data->gender = $request->gender;
@@ -66,19 +59,18 @@ class GuruController extends Controller
 
     public function hapus_guru(Request $request,$id)
     {
-        $findGuru = Guru::where('kode_guru', $id)->first();
+        $findGuru = Guru::where('nuptk', $id)->first();
         if($findGuru){
-            Guru::where('kode_guru',$id)->delete();
+            Guru::where('nuptk',$id)->delete();
             return redirect()->to('/guru')->with('error','Data Dihapus');
         }
     }
     
     public function edit_guru(Request $request,$id)
     {
-        $findGuru = Guru::where('kode_guru', $id)->first();
+        $findGuru = Guru::where('nuptk', $id)->first();
         if($findGuru){
             $dataGuru = [
-                'nuptk' => $request->nuptk,       
                 'nama' => $request->nama, 
                 'gender' => $request->gender, 
                 'alamat' => $request->alamat,  
@@ -90,7 +82,7 @@ class GuruController extends Controller
                 'gelar' => $request->gelar,  
                 'sertifikasi' => $request->sertifikasi
             ];
-            Guru::where('kode_guru',$id)->update($dataGuru);
+            Guru::where('nuptk',$id)->update($dataGuru);
             return redirect()->to('/guru')->with('warning','Data Diubah');
             // return response()->json([
             //     'status'        => array('code' => 200, 'message' => 'Success update new guru.'),
@@ -100,7 +92,7 @@ class GuruController extends Controller
 
     public function edit_guru_profile(Request $request,$id)
     {
-        $findGuru = Guru::where('kode_guru', $id)->first();
+        $findGuru = Guru::where('nuptk', $id)->first();
         if($findGuru){
             $dataGuru = [
                 'gender' => $request->gender,
@@ -123,7 +115,7 @@ class GuruController extends Controller
                     'password' => Hash::make($request->password)
                 ];
             }
-            Guru::where('kode_guru',$id)->update($dataGuru);
+            Guru::where('nuptk',$id)->update($dataGuru);
             return redirect()->to('/profile')->with('warning','Data Diubah');
         }
     }
@@ -140,7 +132,7 @@ class GuruController extends Controller
     // }
     // public function username()
     // {
-    //     return 'kode_guru';
+    //     return 'nuptk';
     // }
     // protected function guard()
     // {

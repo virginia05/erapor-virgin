@@ -18,9 +18,9 @@
             <hr>
             <div class="form-group">
               <label >Pilih Guru</label>
-              <select name="kode_guru" class="form-select w-100 p-2" aria-label="Default select example">
+              <select name="nuptk" class="form-select w-100 p-2" aria-label="Default select example">
                 @foreach ($all_guru as $guru)
-                  <option value="{{$guru->kode_guru}}">{{$guru->nama }}</option>
+                  <option value="{{$guru->nuptk}}">{{$guru->nama }}</option>
                 @endforeach
               </select>
             </div>
@@ -57,9 +57,9 @@
             @csrf
             <div class="form-group">
               <label >Pilih Guru</label>
-              <select name="kode_guru" class="form-select w-100 p-2" aria-label="Default select example">
+              <select name="nuptk" class="form-select w-100 p-2" aria-label="Default select example">
                 @foreach ($all_guru as $guru)
-                  <option value="{{$guru->kode_guru}}">{{$guru->nama }}</option>
+                  <option value="{{$guru->nuptk}}">{{$guru->nama }}</option>
                 @endforeach
               </select>
             </div>

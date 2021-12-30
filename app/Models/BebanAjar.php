@@ -10,7 +10,7 @@ class BebanAjar extends Model
     use HasFactory;
     public $table = "beban_ajar";
     protected $fillable = [
-        'kode_guru', 
+        'nuptk', 
         'id_mapel', 
         'id_kelas'
     ];

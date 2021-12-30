@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('guru')->insert([
-            'kode_guru' => '1',
             'nuptk' => '56748651300023',
             'nama' => 'Dahmurti',
             'gender' => 'Perempuan',
@@ -434,7 +433,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
          DB::table('guru')->insert([
-            'kode_guru' => '2',
             'nuptk' => '123456',
             'nama' => 'Fikri Dwiyansyah',
             'gender' => 'Laki-Laki',
@@ -455,7 +453,7 @@ class DatabaseSeeder extends Seeder
 
            DB::table('kelas')->insert([
             'kode_rombel' => '1',
-            'kode_guru'=>  '2',   
+            'nuptk'=>  '123456',   
             'nama_kelas'=> 'Belum Ada Kelas',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -463,7 +461,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('kelas')->insert([
             'kode_rombel' => '1',
-            'kode_guru'=>  '1',   
+            'nuptk'=>  '56748651300023',   
             'nama_kelas'=> '10 MM 1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -471,7 +469,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('kelas')->insert([
             'kode_rombel' => '1',
-            'kode_guru'=>  '1',   
+            'nuptk'=>  '56748651300023',   
             'nama_kelas'=> '10 MM 2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -480,7 +478,7 @@ class DatabaseSeeder extends Seeder
 
          DB::table('siswa')->insert([
             'nis' => '3041520541',
-            'nama' => 'Adinda Ayu Pratiwi   ',
+            'nama' => 'Adinda Ayu Pratiwi',
             'gender' => 'Perempuan',
             'nama_ibu' => 'Ermanisah',
             'id_kelas' => '1',
@@ -545,7 +543,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
          DB::table('beban_ajar')->insert([
-            'kode_guru' => '1',
+            'nuptk' => '56748651300023',
             'id_kelas' => 2,
             'id_mapel' => 1,
             'created_at' => Carbon::now(),
@@ -553,14 +551,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
          DB::table('beban_ajar')->insert([
-            'kode_guru' => '1',
+            'nuptk' => '56748651300023',
             'id_kelas' => 2,
             'id_mapel' => 2,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
         DB::table('guru')->insert([
-            'kode_guru' => '3',
             'nuptk' => '135775465620040',
             'nama' => 'Nana Maulana',
             'gender' => 'Laki-Laki',

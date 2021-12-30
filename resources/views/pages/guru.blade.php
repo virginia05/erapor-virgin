@@ -33,10 +33,10 @@
             <tbody>
               @foreach ($all_guru as $data)
               <tr class="text-center" style="white-space: nowrap;">
-                <th class="align-middle" scope="row">{{ $data->kode_guru }}</th>
+                <th class="align-middle" scope="row">{{ $data->nuptk }}</th>
                 <td class="d-flex">
-                  <a class="btn btn-warning mr-2" href="{{ url("/form-guru/edit?id=$data->kode_guru") }}">Ubah</a>
-                  <a class="btn btn-danger" href="{{url('/hapus-guru/' . $data->kode_guru)}}" onclick="return confirm('Hapus Data Pendidik?')">Hapus</a>
+                  <a class="btn btn-warning mr-2" href="{{ url("/form-guru/edit?id=$data->nuptk") }}">Ubah</a>
+                  <a class="btn btn-danger" href="{{url('/hapus-guru/' . $data->nuptk)}}" onclick="return confirm('Hapus Data Pendidik?')">Hapus</a>
                 </td>
                 <td class="align-middle">{{ $data->nuptk }}</td>
                 <td class="align-middle">{{ $data->nama }}</td>

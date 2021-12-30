@@ -24,16 +24,16 @@
     @endphp   
     {{-- {{$user}}  --}}
     @if ($user->jenis_ptk)
-        @if ($user->jenis_ptk == "Guru Mapel")
+        @if (str_contains(strtolower("Guru Mapel"), strtolower($user->jenis_ptk)))
             <a class="btn-li my-2" href="{{url('/nilai')}}">Kelola Nilai Siswa</a>
             <a class="btn-li my-2" href="{{url('/absensi')}}">Kelola Absensi</a>
-        @elseif ($user->jenis_ptk == "Kepala Sekolah")
+        @elseif (str_contains(strtolower("Kepala Sekolah"), strtolower($user->jenis_ptk)))
             <a class="btn-li my-2" href="{{url('/ledger?tahun_ajaran=2021/2022&kode_rombel=1')}}">Lihat Ledger</a>
             <b class=" my-2">Laporan</b>
            <a class="btn-li my-2" href="{{url('/lihat-beban')}}">Beban Ajar</a>
            <a class="btn-li my-2" href="{{url('/lihat-siswa')}}">Siswa</a>
            <a class="btn-li my-2" href="{{url('/lihat-guru')}}">Guru</a>
-        @elseif ($user->jenis_ptk == "Tenaga Administrasi Sekolah")
+        @elseif (str_contains(strtolower("Tenaga Administrasi Sekolah"), strtolower($user->jenis_ptk)))
            <a class="btn btn-primary my-3" href="{{url('/reset-tahun-ajaran')}}" onclick="return confirm('Apakah Anda Yakin Ingin Memulai Ajaran Baru?')">Mulai Tahun Ajaran Baru</a>
            <a class="btn-li my-2" href="{{url('/ledger?tahun_ajaran=2021/2022&kode_rombel=1')}}">Lihat Ledger</a>
            <b class=" my-2">Kelola Data</b>

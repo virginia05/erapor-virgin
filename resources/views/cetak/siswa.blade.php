@@ -10,9 +10,9 @@
     <h3 style="text-align: center;">SMK Yapan Indonesia</h3><hr>
           <table class="table">
               <tr class="text-center" >
-                <th class="align-middle"style="width:10%;word-break: break-word;" scope="col">NIS</th>
+                <th class="align-middle"style="width:10%;word-break: break-word;" scope="col">NISN</th>
                 <th class="align-middle" scope="col">Nama</th>
-                <th class="align-middle" scope="col">Gender</th>
+                <th class="align-middle" scope="col">Jenis Kelamin</th>
                 <th class="align-middle" scope="col">Nama Ibu</th>
                 <th class="align-middle" scope="col">Id Kelas</th>
                 <th class="align-middle" scope="col">Alamat</th>

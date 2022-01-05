@@ -92,6 +92,14 @@ class KelasController extends Controller
 
     }
 
+    public function hapus_kelasiswa(Request $request,$itemKelas)
+    {
+        $findsiswa = Siswa::where('nis', $itemKelas)->first();
+        if($findsiswa){
+            Siswa::where('nis',$itemKelas)->delete();
+            return redirect()->to('/kelas')->with('error','Data Dihapus');
+        }
+    }
     
 
     /**

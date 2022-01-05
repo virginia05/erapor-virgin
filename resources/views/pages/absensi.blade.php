@@ -2,7 +2,7 @@
 @section('content')
     <div class="m-3 mt-4 mb-4">
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>
-        <h2>Kelola Absensi</h2>
+        <h2>Kehadiran Siswa</h2>
         <hr>
 
           <div class="dropdown mx-3">

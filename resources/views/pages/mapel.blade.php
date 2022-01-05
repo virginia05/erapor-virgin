@@ -9,13 +9,13 @@
         {{-- lololol --}}
       @endif
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>
-        <a class="btn btn-primary my-3" href="{{ url("/form-mapel/tambah") }}">Tambah Data</a>
+        <a class="btn btn-success my-3" href="{{ url("/form-mapel/tambah") }}">Tambah Data</a>
         <div class="table-responsive mb-3">
           <table class="table">
             <thead class="thead-dark">
               <tr class="text-center" style="white-space: nowrap;" >
-                <th class="align-middle" scope="col">Id</th>
-                <th class="align-middle" scope="col">Nama</th>
+                <th class="align-middle" scope="col">ID</th>
+                <th class="align-middle" scope="col">Nama Mata Pelajaran</th>
                 <th class="align-middle" scope="col">KKM</th>
                 <th class="align-middle" scope="col">Aksi</th>
               </tr>
@@ -62,7 +62,7 @@
                   </ul>
                 @endif
                 <div class="dropdown">
-                  <button class="btn btn-info dropdown-toggle w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn btn-success dropdown-toggle w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                       Tambah Mapel
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="height: 200px;overflow: auto;">

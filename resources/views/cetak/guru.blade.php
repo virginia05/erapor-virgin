@@ -20,11 +20,11 @@
                 <th class="align-middle" style="width:5%;" scope="col">Kode Guru</th>
                 <th class="align-middle" style="width:15%;word-break: break-word;"scope="col">NUPTK</th>
                 <th class="align-middle" scope="col">Nama</th>
-                <th class="align-middle" scope="col">Gender</th>
+                <th class="align-middle" scope="col">Jenis Kelamin</th>
                 <th class="align-middle" scope="col">Alamat</th>
                 <th class="align-middle" scope="col">Tanggal Lahir</th>
-                <th class="align-middle" scope="col">Nomor</th>
-                <th class="align-middle" scope="col">Email</th>
+                <th class="align-middle" scope="col">Nomor Tlp</th>
+                <th class="align-middle" scope="col">E-mail</th>
                 <th class="align-middle" scope="col">Status Pegawai</th>
                 <th class="align-middle" scope="col">Jenis PTK</th>
                 <th class="align-middle" scope="col">Gelar</th>

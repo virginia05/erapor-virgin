@@ -17,10 +17,10 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword2">Nama</label>
-              <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="" value="{{$guru->nama}}">
+              <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="" disabled="true" value="{{$guru->nama}}">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword7">Gender</label>
+              <label for="exampleInputPassword7">Jenis Kelamin</label>
               <p><input {{ ($guru->gender == "Laki-Laki") ? "checked" : "" }} type="radio" name="gender" id="exampleInputPassword7" value="Laki-Laki" required placeholder="">   Laki-Laki 
               <br><input {{ $guru->gender == 'Perempuan' ? 'checked' : '' }} type="radio" name="gender"  id="exampleInputPassword7" value="Perempuan"  required placeholder="">   Perempuan</p>
             </div>
@@ -63,7 +63,7 @@
           <form class="" method="post" action="{{ url("/edit-siswa-profile/$siswa->nis") }}" >
             @csrf
             <div class="form-group">
-              <label for="exampleInputPassword1">NIS</label>
+              <label for="exampleInputPassword1">NISN</label>
               <input type="text" name="nis" class="form-control" id="exampleInputPassword1" placeholder="" disabled="true" value="{{$siswa->nis}}">
             </div>
             <div class="form-group">
@@ -71,7 +71,7 @@
               <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="" disabled="true" value="{{$siswa->nama}}">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword7">Gender</label>
+              <label for="exampleInputPassword7">Jenis Kelamin</label>
               <p><input {{ ($siswa->gender == "Laki-Laki") ? "checked" : "" }} type="radio" name="gender" id="exampleInputPassword7" value="Laki-Laki" required placeholder="">   Laki-Laki 
               <br><input {{ $siswa->gender == 'Perempuan' ? 'checked' : '' }} type="radio" name="gender"  id="exampleInputPassword7" value="Perempuan"  required placeholder="">   Perempuan</p>
             </div>

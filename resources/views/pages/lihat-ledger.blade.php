@@ -25,7 +25,7 @@
                 @endforeach
               </ul>
             </div>
-            <a href="{{url('/cetak-ledger?tahun_ajaran='.$tahun_ajaran.'&kode_rombel='.$kode_rombel)}}" class="btn btn-success ml-2">Cetak PDF</a>
+            <a href="{{url('/cetak-ledger?tahun_ajaran='.$tahun_ajaran.'&kode_rombel='.$kode_rombel)}}" class="btn btn-primary ml-2">Cetak Ledger</a>
         </div>
         <div class="mt-3 mb-2">
           <p>Nama Rombel : <b>{{$nama_rombel}}</b></p>
@@ -35,8 +35,9 @@
           <table class="table">
             <thead class="thead-dark">
               <tr class="text-center">
-                <th scope="col" class="align-middle" rowspan="2">Nama Siswa</th>
-                <th scope="col" class="align-middle" rowspan="2">NIS</th>
+                 <th scope="col" class="align-middle" rowspan="2">NISN</th>
+                 <th scope="col" class="align-middle" rowspan="2">Nama Siswa</th>
+               
                 @foreach ($mapels as $datamapel)
                   <th class="text-nowrap" scope="col" colspan="3">{{$datamapel}}</th>
                 @endforeach

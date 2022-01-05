@@ -21,7 +21,7 @@
           <table class="table" style="table-layout:fixed;">
               <tr   class="text-center">
                 <th style="width:5%;word-break: break-word;" scope="col" class="align-middle" rowspan="2">Nama Siswa</th>
-                <th style="width:3%;word-break: break-word;" scope="col" class="align-middle" rowspan="2">NIS</th>
+                <th style="width:3%;word-break: break-word;" scope="col" class="align-middle" rowspan="2">NISN</th>
                 @foreach ($mapels as $datamapel)
                   <th scope="col" colspan="3">{{$datamapel}}</th>
                 @endforeach

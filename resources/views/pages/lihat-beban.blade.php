@@ -17,7 +17,7 @@
           <table class="table">
             <thead class="thead-dark">
               <tr class="text-center" style="white-space: nowrap;" >
-                <th class="align-middle" scope="col">Id</th>
+                <th class="align-middle" scope="col">ID</th>
                 <th class="align-middle" scope="col">Nama Guru</th>
                 <th class="align-middle" scope="col">Nama Kelas</th>
                 <th class="align-middle" scope="col">Mapel Yang Diajar</th>

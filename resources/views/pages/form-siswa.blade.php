@@ -23,7 +23,7 @@
               <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="" value="{{$siswa->nama}}">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword7">Gender</label>
+              <label for="exampleInputPassword7">Jenis Kelamin</label>
               <p><input type="radio" name="gender" id="exampleInputPassword7" value="Laki-Laki" required placeholder="">   Laki-Laki 
               <br><input type="radio" name="gender"  id="exampleInputPassword7" value="Perempuan"  required placeholder="">   Perempuan</p>
             </div>
@@ -67,7 +67,7 @@
               <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword8">Gender</label>
+              <label for="exampleInputPassword8">Jenis Kelamin</label>
               <p><input type="radio" name="gender" id="exampleInputPassword8" value="Laki-Laki" required placeholder="">   Laki-Laki 
               <br><input type="radio" name="gender"  id="exampleInputPassword8" value="Perempuan"  required placeholder="">   Perempuan</p>
             </div>

@@ -23,7 +23,7 @@
               <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="" value="{{$guru->nama}}">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword10">Gender</label>
+              <label for="exampleInputPassword10">Jenis Kelamin</label>
               <p><input type="radio" name="gender" id="exampleInputPassword10" value="Laki-Laki" required placeholder="">   Laki-Laki 
               <br><input type="radio" name="gender"  id="exampleInputPassword10" value="Perempuan"  required placeholder="">   Perempuan</p>
             </div>
@@ -86,7 +86,7 @@
               <input type="text" name="nama" class="form-control" id="exampleInputPassword2" required placeholder="">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword12">Gender</label>
+              <label for="exampleInputPassword12">Jenis Kelamin</label>
               <p><input type="radio" name="gender" id="exampleInputPassword12" value="Laki-Laki" required placeholder="">   Laki-Laki 
               <br><input type="radio" name="gender"  id="exampleInputPassword12" value="Perempuan"  required placeholder="">   Perempuan</p>
             </div>

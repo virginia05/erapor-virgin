@@ -8,7 +8,7 @@
       <h2>Daftar Kelas</h2>
         <div class="d-flex align-items-center my-3">
           <div class="dropdown mx-3">
-            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Pilih Kelas
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -20,7 +20,7 @@
             </ul>
           </div>
           <div class="dropdown ">
-              <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   Pilih Siswa
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -35,18 +35,21 @@
         <table class="table">
           <thead class="thead-dark">
             <tr class="text-center">
-              <th scope="col">nama_kelas</th>
-              <th scope="col">nama</th>
-              <th scope="col">nis</th>
-              {{-- <th scope="col">Aksi</th> --}}
+              <th scope="col">Nama Kelas</th>
+               <th scope="col">NISN</th>
+               <th scope="col">Nama Siswa</th>
+               <th scope="col">Aksi</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($pilihanKelas as $itemKelas)
             <tr class="text-center">
               <th scope="row">{{ $itemKelas->nama_kelas }}</th>
-              <td>{{ $itemKelas->nama }}</td>
               <td>{{ $itemKelas->nis }}</td>
+              <td>{{ $itemKelas->nama }}</td>
+              <td>
+              <a class="btn btn-danger" href="{{url('/hapus-kelasiswa/' . $itemKelas->nama_kelas)}}" onclick="return confirm('Hapus Data Siswa?')">Hapus</a>
+              </td>
             </tr>
             @endforeach
           </tbody>
@@ -65,7 +68,7 @@
               <th scope="col">Id</th>
               <th scope="col">Rombel</th>
               <th scope="col">Walikelas</th>
-              <th scope="col">kelas</th>
+              <th scope="col">Nama Kelas</th>
               <th scope="col">Aksi</th>
             </tr>
           </thead>
@@ -93,7 +96,7 @@
               </td>
               <td>{{ $dataKelas->nama_kelas }}</td>
               <td>
-              	<button class="btn btn-success" type="submit">Ganti Walikelas</button>
+              	<button class="btn btn-warning" type="submit">Ubah Walikelas</button>
                 </form>
               </td>
             </tr>

@@ -41,6 +41,7 @@ Route::middleware('auth:guru')->group(function(){
 	Route::post('/post/kelas', [KelasController::class, 'store']);
 	Route::post('/ganti-walikelas', [KelasController::class, 'ganti_walikelas']);
 	Route::get('/kelas-kelola-siswa/{nis}/{id_kelas}', [KelasController::class, 'kelola_siswa']);
+	Route::get('/hapus-kelasiswa/{id}', [KelasController::class, 'hapus_kelasiswa']);
 
 	Route::get('/guru', [GuruController::class, 'index']);
 	Route::get('/form-guru/{ket}', [GuruController::class, 'form_guru']);

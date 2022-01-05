@@ -11,8 +11,8 @@
         <iframe id="invisible" name="invisible" style="display:none;"></iframe>
         <div class="dropdown ">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Rombel</button>
-            <a class="btn btn-primary my-3" href="{{ url("/form-beban/tambah") }}">Tambah Beban Ajar</a>
-            <a href="{{ url('/cetak_pdf_beban') }}" class="ml-2 my-2 btn btn-primary">Cetak PDF</a>
+            <a class="btn btn-success my-3" href="{{ url("/form-beban/tambah") }}">Tambah Data</a>
+            <a href="{{ url('/cetak_pdf_beban') }}" class="ml-2 my-2 btn btn-primary">Cetak Data</a>
               
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 @foreach ($all_rombel as $rombel)
@@ -27,7 +27,7 @@
           <table class="table">
             <thead class="thead-dark">
               <tr class="text-center" style="white-space: nowrap;" >
-                <th class="align-middle" scope="col">Id</th>
+                <th class="align-middle" scope="col">ID</th>
                 <th class="align-middle" scope="col">Nama Guru</th>
                 <th class="align-middle" scope="col">Nama Kelas</th>
                 <th class="align-middle" scope="col">Mapel Yang Diajar</th>

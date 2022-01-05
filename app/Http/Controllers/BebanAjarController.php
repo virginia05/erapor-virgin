@@ -147,7 +147,7 @@ class BebanAjarController extends Controller
         // tabel kelas id guru set id = 1 
         BebanAjar::truncate();
         $kelas = Kelas::all();
-        Kelas::query()->update(['nuptk' => 1]);
+        Kelas::query()->update(['nuptk' => NULL]);
         Siswa::query()->update(['id_kelas' => 1]);
 
         return redirect()->to('/kelas');

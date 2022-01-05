@@ -13,6 +13,7 @@
                  <li><a class="dropdown-item" href="{{url('/ledger?tahun_ajaran=2019/2020&kode_rombel='.$kode_rombel)}}">2019/2020</a></li>
                  <li><a class="dropdown-item" href="{{url('/ledger?tahun_ajaran=2020/2021&kode_rombel='.$kode_rombel)}}">2020/2021</a></li>
                  <li><a class="dropdown-item" href="{{url('/ledger?tahun_ajaran=2021/2022&kode_rombel='.$kode_rombel)}}">2021/2022</a></li>
+                 <li><a class="dropdown-item" href="{{url('/ledger?tahun_ajaran=2022/2023&kode_rombel='.$kode_rombel)}}">2022/2023</a></li>
             </ul>
           </div>
           <div class="dropdown ">

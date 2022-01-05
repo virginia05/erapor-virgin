@@ -48,42 +48,61 @@
                 <td>{{$nilai->KKM}}</td>
                 <td>{{$nilai->pengetahuan}}</td>
                 
-                  @if ($nilai->pengetahuan >= 91 )
+                @if ($nilai->pengetahuan >= 95 )
+                    <td>A+</td>
+                  @elseif ($nilai->pengetahuan >= 90 )
                     <td>A</td>
+                  @elseif ($nilai->pengetahuan >= 85 )
+                    <td>A-</td>
+                  @elseif ($nilai->pengetahuan >= 80 )
+                    <td>B+</td>
                   @elseif ($nilai->pengetahuan >= 75 )
                     <td>B</td>
+                  @elseif ($nilai->pengetahuan >= 70 )
+                    <td>B-</td>
                   @elseif ($nilai->pengetahuan >= 60 )
                     <td>C</td>
-                  @elseif ($nilai->pengetahuan >= 55 )
-                    <td>D</td>
                   @else
-                    <td>E</td>
-                  @endif
+                    <td>D</td>
+                  @endif 
                 
                 <td>{{$nilai->keterampilan}}</td>
                 
-                  @if ($nilai->keterampilan >= 91 )
+                @if ($nilai->keterampilan >= 95 )
+                    <td>A+</td>
+                  @elseif ($nilai->keterampilan >= 90 )
                     <td>A</td>
+                  @elseif ($nilai->keterampilan >= 85 )
+                    <td>A-</td>
+                  @elseif ($nilai->keterampilan >= 80 )
+                    <td>B+</td>
                   @elseif ($nilai->keterampilan >= 75 )
                     <td>B</td>
+                  @elseif ($nilai->keterampilan >= 70 )
+                    <td>B-</td>
                   @elseif ($nilai->keterampilan >= 60 )
                     <td>C</td>
-                  @elseif ($nilai->keterampilan >= 55 )
-                    <td>D</td>
                   @else
-                    <td>E</td>
+                    <td>D</td>
                   @endif
 
-                  @if ($nilai->sikap >= 91 )
+
+                  @if ($nilai->sikap >= 95 )
+                    <td>A+</td>
+                  @elseif ($nilai->sikap >= 90 )
                     <td>A</td>
+                  @elseif ($nilai->sikap >= 85 )
+                    <td>A-</td>
+                  @elseif ($nilai->sikap >= 80 )
+                    <td>B+</td>
                   @elseif ($nilai->sikap >= 75 )
                     <td>B</td>
+                  @elseif ($nilai->sikap >= 70 )
+                    <td>B-</td>
                   @elseif ($nilai->sikap >= 60 )
                     <td>C</td>
-                  @elseif ($nilai->sikap >= 55 )
-                    <td>D</td>
                   @else
-                    <td>E</td>
+                    <td>D</td>
                   @endif
                 
               </tr>

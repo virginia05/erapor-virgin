@@ -36,15 +36,15 @@
           <table class="table">
             <thead class="thead-dark">
               <tr class="text-center">
-                <th scope="col">NIS</th>
-                <th scope="col">Nama</th>
+                <th scope="col">NISN</th>
+                <th scope="col">Nama Siswa</th>
                 <th scope="col">Kelas</th>
                 <th scope="col">Mata Pelajaran</th>
                 <th scope="col">Tugas</th>
-                <th scope="col">UTS</th>
-                <th scope="col">UAS</th>
-                <th scope="col">Keterampilan</th>
-                <th scope="col">Sikap</th>
+                <th scope="col">PTS (Penilaian tengah Semester)</th>
+                <th scope="col">PAS (Penilaian Akhir Semester)</th>
+                <th scope="col">Nilai Keterampilan</th>
+                <th scope="col">Nilai Sikap Spiritual dan Sosial</th>
                 <th scope="col">Aksi</th>
               </tr>
             </thead>

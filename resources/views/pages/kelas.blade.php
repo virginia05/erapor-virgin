@@ -48,7 +48,7 @@
               <td>{{ $itemKelas->nis }}</td>
               <td>{{ $itemKelas->nama }}</td>
               <td>
-              <a class="btn btn-danger" href="{{url('/hapus-kelasiswa/' . $itemKelas->nama_kelas)}}" onclick="return confirm('Hapus Data Siswa?')">Hapus</a>
+              <a class="btn btn-danger" href="{{url('/hapus-kelasiswa/' . $itemKelas->nis)}}" onclick="return confirm('Hapus Data Siswa?')">Hapus</a>
               </td>
             </tr>
             @endforeach
